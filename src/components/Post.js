@@ -10,7 +10,8 @@ class Post extends React.Component {
         super(props);
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.state = {
-            description: ''
+            description: '',
+            restaurant: ''
         };
 
     }
@@ -21,7 +22,7 @@ class Post extends React.Component {
 
 
     addPostToServer = () => {
-        debugger
+        // debugger
         return fetch('http://localhost:3000/posts', {
             method: 'POST',
             headers: {
@@ -37,6 +38,13 @@ class Post extends React.Component {
                 <Form onSubmit={this.addPostToServer}>
                     <Form.Group widths='equal'>
 
+                        <Form.Field
+                            id='form-input-control-last-name'
+                            control={Input} onChange={this.handleDescriptionChange}
+                            label='restaurant'
+                            placeholder='restaurant'
+                        />
+                        <Form.Button>Submit</Form.Button>
                         <Form.Field
                             id='form-input-control-last-name'
                             control={Input} onChange={this.handleDescriptionChange}

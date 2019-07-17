@@ -42,18 +42,16 @@ class Inventory extends React.Component {
     const { inventory } = this.state
 
     return (
-      <div>
-
+     
+      <div style={this.style} className='user-list'>
+        <h3>Here's your inventory:</h3>
+        {inventory.length === 0 && <p>Sorry, you don't have any items.</p>}
+        {
+          inventory.map(item =>
+            <Item key={item.id} item={item} />
+          )
+        }
       </div>
-      // <div style={this.style} className='user-list'>
-      //   <h3>Here's your inventory:</h3>
-      //   {inventory.length === 0 && <p>Sorry, you don't have any items.</p>}
-      //   {
-      //     inventory.map(item =>
-      //       <Item key={item.id} item={item} />
-      //     )
-      //   }
-      // </div>
 
     )
   }

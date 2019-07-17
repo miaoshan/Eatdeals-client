@@ -14,18 +14,16 @@ const Header = props => (
     <ButtonBases />
     <CustomizedInputBase />
     <Link to="/">
-
-      {/* <img src={logo} className="App-logo" alt="logo" /> */}
     </Link>
     <h1 className="App-title">
-      {/* {props.username
+      {props.username
         ? `Welcome back, ${props.username}!`
         : "Welcome to Eatdeals!"}
       {props.username && (
         <Button onClick={props.signout} variant="contained" color="primary">
           SIGN OUT
         </Button>
-      )} */}
+      )}
     </h1>
   </header >
 );
