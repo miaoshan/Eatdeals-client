@@ -43,12 +43,7 @@ class Inventory extends React.Component {
 
     return (
       <div>
-        <nav>
-          <a href="/html/">HTML</a> |
-          <a href="/css/">CSS</a> |
-          <a href="/js/">JavaScript</a> |
-          <a href="/jquery/">jQuery</a>
-        </nav>
+
       </div>
       // <div style={this.style} className='user-list'>
       //   <h3>Here's your inventory:</h3>

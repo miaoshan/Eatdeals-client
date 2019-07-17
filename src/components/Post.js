@@ -1,41 +1,53 @@
 import React from 'react'
+// import axios from 'axios'
 import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react'
-
-
-
 
 import { Link } from 'react-router-dom'
 
-const Post = props =>
-    <div>
+class Post extends React.Component {
 
-        <h1>This will be the user post page</h1>
+    constructor(props) {
+        super(props);
+        this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+        this.state = {
+            description: ''
+        };
+
+    }
+
+    handleDescriptionChange(e) {
+        this.setState({ description: e.target.value })
+    }
 
 
-        <Form>
-            <Form.Group widths='equal'>
-                <Form.Field
-                    id='form-input-control-first-name'
-                    control={Input}
-                    label='location'
-                    placeholder='location'
-                />
-                <Form.Field
-                    id='form-input-control-last-name'
-                    control={Input}
-                    label='deal'
-                    placeholder='description'
-                />
+    addPostToServer = () => {
+        debugger
+        return fetch('http://localhost:3000/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ description: this.state.description })
+        }).then(resp => resp.json).then(console.log)
+    }
+    render() {
+        return (
+            <div>
+                <h1>This will be the user post page</h1>
+                <Form onSubmit={this.addPostToServer}>
+                    <Form.Group widths='equal'>
 
-            </Form.Group>
-
-            <Form.Field
-                id='form-button-control-public'
-                control={Button}
-                content='submit'
-                label=''
-            />
-        </Form>
-    </div>
-
+                        <Form.Field
+                            id='form-input-control-last-name'
+                            control={Input} onChange={this.handleDescriptionChange}
+                            label='deal'
+                            placeholder='description'
+                        />
+                    </Form.Group>
+                    <Form.Button>Submit</Form.Button>
+                </Form>
+            </div>
+        )
+    }
+}
 export default Post
