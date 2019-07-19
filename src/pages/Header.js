@@ -15,7 +15,7 @@ const Header = props => (
     <CustomizedInputBase />
     <Link to="/">
     </Link>
-    <h1 className="App-title">
+    {/* <h1 className="App-title">
       {props.username
         ? `Welcome back, ${props.username}!`
         : "Welcome to Eatdeals!"}
@@ -24,7 +24,7 @@ const Header = props => (
           SIGN OUT
         </Button>
       )}
-    </h1>
+    </h1> */}
   </header >
 );
 

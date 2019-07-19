@@ -20,6 +20,10 @@ class Post extends React.Component {
         this.setState({ description: e.target.value })
     }
 
+    // handleRestaurantChange(e) {
+
+    //     this.setState({ restaurant: e.target.value })
+    // }
 
     addPostToServer = () => {
         // debugger
@@ -40,9 +44,11 @@ class Post extends React.Component {
 
                         <Form.Field
                             id='form-input-control-last-name'
-                            control={Input} onChange={this.handleDescriptionChange}
+                            control={Input} onChange={this.handleRestaurantChange}
                             label='restaurant'
                             placeholder='restaurant'
+                            name='restaurant'
+
                         />
                         <Form.Button>Submit</Form.Button>
                         <Form.Field
@@ -50,6 +56,8 @@ class Post extends React.Component {
                             control={Input} onChange={this.handleDescriptionChange}
                             label='deal'
                             placeholder='description'
+                            name='description'
+
                         />
                     </Form.Group>
                     <Form.Button>Submit</Form.Button>
