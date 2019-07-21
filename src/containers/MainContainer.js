@@ -9,7 +9,9 @@ class MainContainer extends Component {
         this.state = {
             restaurants: [],
             filterType: "All",
-            sortBy: "Alphabetically"
+            sortBy: "Alphabetically",
+            searchTerm: "",
+            clicked: false
         }
     }
 
@@ -35,10 +37,16 @@ class MainContainer extends Component {
     sortRestaurants = () => {
         let sortFunctions = {
             "Alphabetically": (a, b) => a.name.localeCompare(b.name),
-            "Review": (a, b) => a.review - b.review
+            "Review": (a, b) => b.review - a.review,
+            "Price": (a, b) => b.average_cost_per_person - a.average_cost_per_person
+
+
         }
         return this.state.restaurants.sort(sortFunctions[this.state.sortBy])
     }
+
+
+
 
     componentDidMount() {
         fetch("http://localhost:3000/restaurants")
@@ -50,10 +58,10 @@ class MainContainer extends Component {
 
     render() {
         return (
-           <div>
-                               
-            <SearchBar></SearchBar>
-            <RestaurantContainer restaurants={this.getFilteredRestaurants(this.sortRestaurants())} />
+            <div>
+                <SearchBar setFilter={this.setFilter} setSortBy={this.setSortBy}
+                ></SearchBar>
+                <RestaurantContainer restaurants={this.getFilteredRestaurants(this.sortRestaurants())} />
             </div>
         )
     }

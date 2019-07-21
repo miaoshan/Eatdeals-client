@@ -8,10 +8,10 @@ const SearchBar = (props) => {
         <div>
             <div className="searching">
                 <span className="searching">
-                    <form onSubmit={"props.setSortBy"} className="searchBar">
+                    <form onSubmit={"props.setFilter"} className="searchBar">
                         <input
                             className="searchBox"
-                            onChange={props.setSortBy}
+                            onChange={props.setFilter}  // need a function
                             type="text"
                             placeholder="Search"
                         />
@@ -20,10 +20,12 @@ const SearchBar = (props) => {
                 </span>
                 <span className="searching">
                     <p className="orangeFont">Sort By:</p>
-                    <select onChange={props.setFilter} className="searchButton">
+                    <select onChange={props.setSortBy} className="searchButton">
                         <option value="All">All</option>
                         <option value="Alphabetically">Alphabetically</option>
-                        <option value="Review">Review</option>
+                        <option value="Price">Average cost per person High-Low</option>
+                        <option value="Review">Review High-Low</option>
+                        <option value="GBP">United Kingdom Pounds</option>
                     </select>
                 </span>
             </div>

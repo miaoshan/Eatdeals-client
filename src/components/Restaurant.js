@@ -27,7 +27,10 @@ const Restaurant = (props) => (
 
                 <p className="card-text">
                     Review: {props.restaurant.review}
+                </p>
 
+                <p className="card-text">
+                    Average cost per person: £{props.restaurant.average_cost_per_person}
                 </p>
             </div>
         </div>
