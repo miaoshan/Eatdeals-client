@@ -23,21 +23,13 @@ function NavBar() {
                 {/* <Link style={navStyle} to="/login">
                     <li className="navButtons">login</li>
                 </Link> */}
+                <Link style={navStyle} to="/restaurants">
+                    <li className="navButtons">restaurants</li>
+                </Link>
                 <Link style={navStyle} to="/postadeal">
                     <li className="navButtons">post deal</li>
                 </Link>
-                <Link style={navStyle} to="/my favourite">
-                    <li className="navButtons">favourite</li>
-                </Link>
-                <Link style={navStyle} to="/cart">
-                    <li>
-                        <img
-                            className="navImage"
-                            src="https://i.imgur.com/gphuW4V.png"
-                            alt="Cart"
-                        />
-                    </li>
-                </Link>
+
                 <Link style={navStyle} to="/login">
                     <li>
                         <img

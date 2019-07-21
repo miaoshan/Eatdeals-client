@@ -33,22 +33,25 @@ export default function CustomizedInputBase() {
     const classes = useStyles();
 
     return (
-        <Paper className={classes.root}>
-            <IconButton className={classes.iconButton} aria-label="Menu">
-                <MenuIcon />
-            </IconButton>
-            <InputBase
-                className={classes.input}
-                placeholder="Search Google Maps"
-                inputProps={{ 'aria-label': 'Search Google Maps' }}
-            />
-            <IconButton className={classes.iconButton} aria-label="Search" >
-                <SearchIcon />
-            </IconButton>
-            <Divider className={classes.divider} />
-            <IconButton color="primary" className={classes.iconButton} aria-label="Directions">
-                <DirectionsIcon />
-            </IconButton>
-        </Paper>
+    
+            <Paper className={classes.root}>
+                <IconButton className={classes.iconButton} aria-label="Menu">
+                    <MenuIcon />
+                </IconButton>
+                <InputBase
+                    className={classes.input}
+                    placeholder="Search Google Maps"
+                    inputProps={{ 'aria-label': 'Search Google Maps' }}
+                />
+                <IconButton className={classes.iconButton} aria-label="Search" >
+                    <SearchIcon />
+                </IconButton>
+                <Divider className={classes.divider} />
+                <IconButton color="primary" className={classes.iconButton} aria-label="Directions">
+                    <DirectionsIcon />
+                </IconButton>
+            </Paper>
+
+            
     );
 }
