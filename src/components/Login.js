@@ -32,11 +32,11 @@ class Login extends React.Component {
         e.preventDefault();
         api.signup(this.state.username, this.state.password).then(data => {
             if (data.error) {
-                debugger
+
                 alert("plese enter your details to signup");
                 this.setState({ username: "", password: "" });
             } else {
-                debugger
+
                 localStorage.setItem("token", data.jwt);
                 this.setState({ logged_in: true, username: data.username });
             }

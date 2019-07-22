@@ -8,61 +8,78 @@ class Post extends React.Component {
 
     constructor(props) {
         super(props);
-        this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.state = {
             description: '',
-            restaurant: ''
+            restaurant_id: '',
         };
 
     }
 
-    handleDescriptionChange(e) {
-        this.setState({ description: e.target.value })
+    handleChange(e) {
+        this.setState({ [e.target.name]: e.target.value })
     }
 
-    // handleRestaurantChange(e) {
+    handleSubmit = (e) => {
+        e.preventDefault()
+        debugger
+        this.addPostToServer()
+    }
 
-    //     this.setState({ restaurant: e.target.value })
-    // }
 
-    addPostToServer = () => {
-        // debugger
+    addPostToServer = (e) => {
+        e.preventDefault()
         return fetch('http://localhost:3000/posts', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
             },
-            body: JSON.stringify({ description: this.state.description })
-        }).then(resp => resp.json).then(console.log)
+            body: JSON.stringify(
+                this.state
+            )
+        }).then(resp => resp.json())
+            .then(() => this.props.history.push("restaurants"))
     }
     render() {
         return (
             <div>
-                <h1>This will be the user post page</h1>
-                <Form onSubmit={this.addPostToServer}>
-                    <Form.Group widths='equal'>
 
-                        <Form.Field
-                            id='form-input-control-last-name'
-                            control={Input} onChange={this.handleRestaurantChange}
-                            label='restaurant'
-                            placeholder='restaurant'
-                            name='restaurant'
+                <div className="post">
+                    <form onSubmit={this.addPostToServer} className="searchBar" >
 
-                        />
-                        <Form.Button>Submit</Form.Button>
-                        <Form.Field
-                            id='form-input-control-last-name'
-                            control={Input} onChange={this.handleDescriptionChange}
-                            label='deal'
-                            placeholder='description'
-                            name='description'
+                        <span className="post">
+                            <select name="restaurant_id" onChange={this.handleChange} >
+                                <option value="3"> Cinnamon Kitchen Oxford</option>
+                                <option value="4">Palm Court Brasserie</option>
+                                <option selected value="1">Afternoon Tea @ Holt Hotel</option>
+                                <option selected value="5">Boulevard Brasserie</option>
+                                <option selected value="6">Joe Allen - Covent Garden</option>
+                                <option selected value="7">Frankie & Benny's - Oxford</option>
+                                <option selected value="8">The Rattle Owl</option>
+                                <option selected value="9">Elnecot</option>
+                                <option selected value="10">Oblix West at The Shard</option>
+                                <option selected value="11">Aqua shard</option>
+                            </select>
 
-                        />
-                    </Form.Group>
-                    <Form.Button>Submit</Form.Button>
-                </Form>
-            </div>
+                        </span>
+                        <input
+                            name="description"
+                            className="inputBox"
+                            onChange={this.handleChange}  // need a function
+                            type="text"
+                            placeholder="description"
+                            label='description' />
+                        <input className="searchButton" type="submit" />
+                        <div className="post">
+
+                        </div>
+                    </form >
+
+                </div >
+
+
+            </div >
         )
     }
 }

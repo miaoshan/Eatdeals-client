@@ -14,6 +14,7 @@ class App extends React.Component {
   state = {
     logged_in: false,
     username: "",
+    id: "",
     password: "",
     posts: [],
     sortBy: "All",
@@ -21,10 +22,11 @@ class App extends React.Component {
   };
 
   componentDidMount() {
+
     const token = localStorage.getItem("token");
     if (token) {
       api.getCurrentUser(token).then(user => {
-        this.setState({ logged_in: true, username: user.username });
+        this.setState({ logged_in: true, username: user.username, id: user.id });
       });
     }
   }
@@ -74,13 +76,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar />
-        <Header />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/restaurants" component={MainContainer} />
-          <Route path="/postadeal" component={Post} />
-          <Route path="/login" component={Login} />
+          <Route path="/postadeal" render={(routerProps) => <Post id={this.state.id} {...routerProps} />} />
+          <Route path="/login" component={(routerProps) => <Login {...routerProps} />} />
           <Route component={() => <h1>Page not found.</h1>} />
+
 
         </Switch>
       </div>
@@ -91,5 +93,5 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
 

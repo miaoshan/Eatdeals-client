@@ -14,8 +14,8 @@ function NavBar() {
                     <img
                         className="homeImage"
                         src="https://cdn1.iconfinder.com/data/icons/pet-me-vol-1/64/meong-24-512.png"
-                        alt="Home Image"
-                    />
+                        alt="Home Image" />
+                    <div>Eatdeal</div>
                 </h3>
             </Link>
 
@@ -24,10 +24,23 @@ function NavBar() {
                     <li className="navButtons">login</li>
                 </Link> */}
                 <Link style={navStyle} to="/restaurants">
-                    <li className="navButtons">restaurants</li>
+                    <li className="navButtons">
+                        <img
+                            className="navImage"
+                            src="https://media-public.canva.com/MACF3-J8ZPM/1/thumbnail_large.png"
+                            alt="Home page"
+                        />
+                    </li>
                 </Link>
+
                 <Link style={navStyle} to="/postadeal">
-                    <li className="navButtons">post deal</li>
+                    <li className="navButtons">
+                        <img
+                            className="navImage"
+                            src="https://media-public.canva.com/MABokBeUXA8/1/thumbnail.png"
+                            alt="Home page"
+                        />
+                    </li>
                 </Link>
 
                 <Link style={navStyle} to="/login">

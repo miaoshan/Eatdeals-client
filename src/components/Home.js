@@ -3,6 +3,7 @@ import RestaurantCard from './Restaurant'
 
 import { Link } from 'react-router-dom'
 
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -54,11 +55,7 @@ class Home extends React.Component {
 
     return (
       <div id="HomePage_Id" >
-        {/* <RestaurantCard /> */}
 
-
-
-        <h1> This will be the homepage</h1>
       </div>
     )
   }
