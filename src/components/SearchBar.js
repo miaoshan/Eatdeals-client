@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Button from "@material-ui/core/Button";
 
-
 const SearchBar = (props) => {
 
     return (
@@ -23,8 +22,6 @@ const SearchBar = (props) => {
 
                 </span>
             </div>
-
-
 
 
             <div>

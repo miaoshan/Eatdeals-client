@@ -39,7 +39,7 @@ class Post extends React.Component {
                 this.state
             )
         }).then(resp => resp.json())
-            .then(() => this.props.history.push("restaurants"))
+            .then(() => this.props.history.push("restaurants"))   // submit post then redirect to "/restaurants"
     }
     render() {
         return (

@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import RestaurantContainer from './RestaurantContainer';
 import SearchBar from '../components/SearchBar';
 import InputUI from '../components/InputUI';
-import Restaurant from '../components/Restaurant';
+import { Map, GoogleApiWrapper } from 'google-maps-react';
 
+const mapStyles = {
+    width: '100%',
+    height: '50%',
+};
 
 class MainContainer extends Component {
     constructor() {
@@ -17,6 +21,7 @@ class MainContainer extends Component {
             selectedRestaurant: null
         }
     }
+
     // --------------------------------------------------------------------------- searching 
     // selectRestaurant = (restaurant) => {
     //     this.setState({ selectedRestaurant: restaurant })
@@ -28,7 +33,6 @@ class MainContainer extends Component {
         //     .map((restaurant, index) => < Restaurant key={index} restaurant={restaurant} />)
     }
 
-
     deselectRestaurant = () => {
         this.setState({ selectedRestaurant: null })
     }
@@ -36,7 +40,6 @@ class MainContainer extends Component {
     updateSearchTerm = (event) => {
         this.setState({ searchTerm: event.target.value })
     }
-
 
     // ----------------------------------------------------------------------------- searching 
 
@@ -63,8 +66,6 @@ class MainContainer extends Component {
             "Alphabetically": (a, b) => a.name.localeCompare(b.name),
             "Review": (a, b) => b.review - a.review,
             "Price": (a, b) => b.average_cost_per_person - a.average_cost_per_person
-
-
         }
         return this.state.restaurants.sort(sortFunctions[this.state.sortBy])
     }
@@ -74,7 +75,6 @@ class MainContainer extends Component {
         fetch("http://localhost:3000/restaurants")
             .then(resp => resp.json())
             .then(data => this.setState({ restaurants: data }))
-
     }
 
     finalRestaurantsList = () => {
@@ -85,9 +85,7 @@ class MainContainer extends Component {
         return collection.filter(restaurant => restaurant.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
     }
 
-
     render() {
-
         return (
             <div>
                 <SearchBar
@@ -97,8 +95,16 @@ class MainContainer extends Component {
                 ></SearchBar><InputUI />
                 <RestaurantContainer restaurants={this.finalRestaurantsList()} searchTerm={this.state.searchTerm}
                     deselectRestaurant={this.deselectRestaurant} selectRestaurant={this.selectRestaurant} />
+                <Map
+                    google={this.props.google}
+                    zoom={18}
+                    style={mapStyles}
+                    initialCenter={{ lat: 51.509865, lng: -0.118092 }}
+                ></Map>
             </div>
         )
     }
 }
-export default MainContainer;
+export default GoogleApiWrapper({
+    apiKey: 'AIzaSyD31RrQSrrMtkjGxt6w4l48M8Nll3ljRgY'
+})(MainContainer);
