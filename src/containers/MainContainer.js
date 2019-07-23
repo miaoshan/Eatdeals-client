@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import RestaurantContainer from './RestaurantContainer';
+import PostContainer from './PostContainer';
+
 import SearchBar from '../components/SearchBar';
 import InputUI from '../components/InputUI';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
@@ -18,7 +20,8 @@ class MainContainer extends Component {
             sortBy: "Alphabetically",
             searchTerm: "",
             clicked: false,
-            selectedRestaurant: null
+            selectedRestaurant: null,
+            posts: []
         }
     }
 
@@ -70,11 +73,24 @@ class MainContainer extends Component {
         return this.state.restaurants.sort(sortFunctions[this.state.sortBy])
     }
 
+    fetchRestaurants = () => {
+        return fetch("http://localhost:3000/restaurants")
+            .then(resp => resp.json())
+    }
+
+    fetchPosts = () => {
+        return fetch("http://localhost:3000/posts")
+            .then(resp => resp.json())
+    }
 
     componentDidMount() {
-        fetch("http://localhost:3000/restaurants")
-            .then(resp => resp.json())
-            .then(data => this.setState({ restaurants: data }))
+        this.fetchRestaurants()
+            .then(restaurants => {
+                this.fetchPosts()
+                    .then(posts => {
+                        this.setState({ restaurants: restaurants, posts: posts })
+                    })
+            })
     }
 
     finalRestaurantsList = () => {
@@ -85,6 +101,17 @@ class MainContainer extends Component {
         return collection.filter(restaurant => restaurant.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
     }
 
+
+
+    // getUserPosts = () => {
+    //     const token = localStorage.getItem("token");
+    //     api
+    //         .getPosts(token)
+    //         .then(posts => {
+    //             this.setState({ posts }, () => console.log(this.state.posts))
+    //         })
+    // }
+
     render() {
         return (
             <div>
@@ -94,13 +121,16 @@ class MainContainer extends Component {
                     selectRestaurant={this.selectRestaurant}
                 ></SearchBar><InputUI />
                 <RestaurantContainer restaurants={this.finalRestaurantsList()} searchTerm={this.state.searchTerm}
-                    deselectRestaurant={this.deselectRestaurant} selectRestaurant={this.selectRestaurant} />
+                    deselectRestaurant={this.deselectRestaurant} selectRestaurant={this.selectRestaurant} /><br />
+                <PostContainer posts={this.state.posts} />
+
                 <Map
                     google={this.props.google}
                     zoom={18}
                     style={mapStyles}
                     initialCenter={{ lat: 51.509865, lng: -0.118092 }}
                 ></Map>
+
             </div>
         )
     }

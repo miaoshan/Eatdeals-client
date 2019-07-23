@@ -2,7 +2,8 @@ const API_BASE_URL = `http://localhost:3000`;
 
 const headers = {
     "Content-Type": "application/json",
-    Accepts: "application/json"
+    "Accepts": "application/json",
+    "Authorization": localStorage.getItem("token")
 };
 
 const login = (username, password) => {

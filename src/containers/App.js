@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom"; // get access to match,location and history.
 import Home from "../components/Home";
 import Navbar from "../components/Navbar";
-import Post from "../components/Post";
+import PostForm from "../components/PostForm";
 import Header from "../pages/Header";
 import api from "../util/api";
-import Map from "../components/Map";
 import Login from "../components/Login";
 import "../App.css";
 import MainContainer from "./MainContainer";
@@ -79,7 +78,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/restaurants" component={MainContainer} />
-          <Route path="/postadeal" render={(routerProps) => <Post id={this.state.id} {...routerProps} />} />
+          <Route path="/postadeal" render={(routerProps) => <PostForm id={this.state.id} {...routerProps} />} />
           <Route path="/login" component={(routerProps) => <Login {...routerProps} />} />
           <Route component={() => <h1>Page not found.</h1>} />
 

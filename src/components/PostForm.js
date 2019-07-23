@@ -1,10 +1,10 @@
 import React from 'react'
 // import axios from 'axios'
-import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react'
 
 import { Link } from 'react-router-dom'
+import api from '../util/api';
 
-class Post extends React.Component {
+class PostForm extends React.Component {
 
     constructor(props) {
         super(props);
@@ -12,6 +12,7 @@ class Post extends React.Component {
         this.state = {
             description: '',
             restaurant_id: '',
+            posts: []
         };
 
     }
@@ -22,7 +23,7 @@ class Post extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        debugger
+
         this.addPostToServer()
     }
 
@@ -41,6 +42,9 @@ class Post extends React.Component {
         }).then(resp => resp.json())
             .then(() => this.props.history.push("restaurants"))   // submit post then redirect to "/restaurants"
     }
+
+
+
     render() {
         return (
             <div>
@@ -61,8 +65,13 @@ class Post extends React.Component {
                                 <option selected value="10">Oblix West at The Shard</option>
                                 <option selected value="11">Aqua shard</option>
                             </select>
-
                         </span>
+
+
+
+
+
+
                         <input
                             name="description"
                             className="inputBox"
@@ -70,7 +79,7 @@ class Post extends React.Component {
                             type="text"
                             placeholder="description"
                             label='description' />
-                        <input className="searchButton" type="submit" />
+                        <input className="submitButton" type="submit" />
                         <div className="post">
 
                         </div>
@@ -83,4 +92,4 @@ class Post extends React.Component {
         )
     }
 }
-export default Post
+export default PostForm

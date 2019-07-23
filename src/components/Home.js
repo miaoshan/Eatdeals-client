@@ -1,6 +1,4 @@
 import React from 'react'
-import RestaurantCard from './Restaurant'
-
 import { Link } from 'react-router-dom'
 
 

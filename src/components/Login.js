@@ -33,7 +33,7 @@ class Login extends React.Component {
         api.signup(this.state.username, this.state.password).then(data => {
             if (data.error) {
 
-                alert("plese enter your details to signup");
+                alert("please enter your details to signup");
                 this.setState({ username: "", password: "" });
             } else {
 
