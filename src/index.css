@@ -212,3 +212,13 @@ input:hover {
   color: rgb(255, 126, 0);
 }
 /* -------------SEARCH BAR------------- */
+
+
+
+.restaurantContainer{
+
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

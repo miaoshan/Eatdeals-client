@@ -77,7 +77,7 @@ class App extends React.Component {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/restaurants" component={MainContainer} />
+          <Route path="/home" component={MainContainer} />
           <Route path="/postadeal" render={(routerProps) => <PostForm id={this.state.id} {...routerProps} />} />
           <Route path="/login" component={(routerProps) => <Login {...routerProps} />} />
           <Route component={() => <h1>Page not found.</h1>} />

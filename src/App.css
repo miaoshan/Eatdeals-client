@@ -46,3 +46,19 @@
   text-align: center
 
 }
+
+.restaurantContainer{
+
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.postContainer{
+
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

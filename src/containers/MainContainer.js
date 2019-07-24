@@ -68,7 +68,9 @@ class MainContainer extends Component {
         let sortFunctions = {
             "Alphabetically": (a, b) => a.name.localeCompare(b.name),
             "Review": (a, b) => b.review - a.review,
-            "Price": (a, b) => b.average_cost_per_person - a.average_cost_per_person
+            "Price": (a, b) => b.average_cost_per_person - a.average_cost_per_person,
+
+
         }
         return this.state.restaurants.sort(sortFunctions[this.state.sortBy])
     }
@@ -98,7 +100,7 @@ class MainContainer extends Component {
     }
 
     filterBySearchTerm = collection => {
-        return collection.filter(restaurant => restaurant.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
+        return collection.filter(restaurant => restaurant.location.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
     }
 
 

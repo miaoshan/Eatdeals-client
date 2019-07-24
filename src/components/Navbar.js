@@ -23,7 +23,7 @@ function NavBar() {
                 {/* <Link style={navStyle} to="/login">
                     <li className="navButtons">login</li>
                 </Link> */}
-                <Link style={navStyle} to="/restaurants">
+                <Link style={navStyle} to="/home">
                     <li className="navButtons">
                         <img
                             className="navImage"
@@ -47,7 +47,7 @@ function NavBar() {
                     <li>
                         <img
                             className="navImage"
-                            src="https://i.imgur.com/gkemPmm.png"
+                            src="https://media-public.canva.com/MABWubh33d0/1/thumbnail.png"
                             alt="Login Key"
                         />
                     </li>

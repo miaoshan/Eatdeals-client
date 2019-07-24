@@ -17,6 +17,13 @@ class PostDetails extends Component {
                         <p className="card-text">
                             Deal: {this.props.post.description}
                         </p>
+
+                        <p className="card-text">
+                            Image:
+                        </p>
+                        <img className="restaurant-img" src={this.props.post.restaurant.image} />
+
+
                     </div>
                 </div>
 

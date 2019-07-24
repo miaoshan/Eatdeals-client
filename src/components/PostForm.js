@@ -12,6 +12,7 @@ class PostForm extends React.Component {
         this.state = {
             description: '',
             restaurant_id: '',
+            image: '',
             posts: []
         };
 
@@ -21,11 +22,6 @@ class PostForm extends React.Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault()
-
-        this.addPostToServer()
-    }
 
 
     addPostToServer = (e) => {
@@ -40,10 +36,14 @@ class PostForm extends React.Component {
                 this.state
             )
         }).then(resp => resp.json())
-            .then(() => this.props.history.push("restaurants"))   // submit post then redirect to "/restaurants"
+            .then(() => this.props.history.push("home"))   // submit post then redirect to "/home"
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
 
+        this.addPostToServer()
+    }
 
     render() {
         return (
@@ -68,14 +68,19 @@ class PostForm extends React.Component {
                         </span>
 
 
-
-
+                        <input
+                            name="image"
+                            className="inputBox"
+                            onChange={this.handleChange}
+                            type="text"
+                            placeholder="image"
+                            label='image' />
 
 
                         <input
                             name="description"
                             className="inputBox"
-                            onChange={this.handleChange}  // need a function
+                            onChange={this.handleChange}
                             type="text"
                             placeholder="description"
                             label='description' />
