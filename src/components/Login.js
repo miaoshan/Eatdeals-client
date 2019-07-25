@@ -9,7 +9,7 @@ class Login extends React.Component {
 
     state = {
         username: "",
-        password: ""
+        password: "",
     }
 
 
@@ -23,6 +23,9 @@ class Login extends React.Component {
             } else {
                 localStorage.setItem("token", data.jwt);
                 this.setState({ logged_in: true, username: data.username });
+                this.props.saveUser(data)
+                // debugger
+                this.props.history.push('/postadeal')
             }
         });
     };
@@ -39,6 +42,8 @@ class Login extends React.Component {
 
                 localStorage.setItem("token", data.jwt);
                 this.setState({ logged_in: true, username: data.username });
+                this.props.saveUser(data)
+                this.props.history.push('/postadeal')
             }
         });
     };

@@ -27,7 +27,13 @@ const signup = (username, password) => {
 const getCurrentUser = token => {
     return fetch(`${API_BASE_URL}/auth/show`, {
         headers: { ...headers, Authorization: token }
-    }).then(resp => resp.json());
+    }).then(resp => {
+        var result = resp.json();
+        result.then(user => {
+        });
+        // debugger
+        return result;
+    });
 };
 
 

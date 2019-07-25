@@ -55,7 +55,9 @@
   justify-content: space-around;
 }
 
-.postContainer{
+
+
+.dealContainer{
 
   display: flex;
   flex-direction: row; 

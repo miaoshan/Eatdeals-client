@@ -4,7 +4,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import api from '../util/api';
 
-class PostForm extends React.Component {
+class DealForm extends React.Component {
 
     constructor(props) {
         super(props);
@@ -13,7 +13,7 @@ class PostForm extends React.Component {
             description: '',
             restaurant_id: '',
             image: '',
-            posts: []
+
         };
 
     }
@@ -25,18 +25,28 @@ class PostForm extends React.Component {
 
 
     addPostToServer = (e) => {
+        let post = {
+            deal: {
+                user_id: this.props.id,
+                description: this.state.description,
+                restaurant_id: this.state.restaurant_id,
+                image: this.state.image,
+            }
+        }
         e.preventDefault()
-        return fetch('http://localhost:3000/posts', {
+        return fetch('http://localhost:3000/deals', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': localStorage.getItem('token')
             },
-            body: JSON.stringify(
-                this.state
-            )
+            body: JSON.stringify(post)
         }).then(resp => resp.json())
-            .then(() => this.props.history.push("home"))   // submit post then redirect to "/home"
+
+            .then((json) => {
+                console.log(json)
+                this.props.history.push("home")
+            })   // submit post then redirect to "/home"
     }
 
     handleSubmit = (e) => {
@@ -47,35 +57,27 @@ class PostForm extends React.Component {
 
     render() {
         return (
-            <div>
-
-                <div className="post">
+            <>
+                <div className="dealform">
                     <form onSubmit={this.addPostToServer} className="searchBar" >
 
                         <span className="post">
                             <select name="restaurant_id" onChange={this.handleChange} >
-                                <option value="3"> Cinnamon Kitchen Oxford</option>
-                                <option value="4">Palm Court Brasserie</option>
-                                <option selected value="1">Afternoon Tea @ Holt Hotel</option>
-                                <option selected value="5">Boulevard Brasserie</option>
-                                <option selected value="6">Joe Allen - Covent Garden</option>
-                                <option selected value="7">Frankie & Benny's - Oxford</option>
-                                <option selected value="8">The Rattle Owl</option>
-                                <option selected value="9">Elnecot</option>
-                                <option selected value="10">Oblix West at The Shard</option>
-                                <option selected value="11">Aqua shard</option>
+                                {this.props.restaurants.map(rest => <option value={rest.id}>{rest.name}</option>)}
+
+
                             </select>
                         </span>
 
 
+
                         <input
-                            name="image"
+                            name="image" onChange={this.handleChange}
                             className="inputBox"
                             onChange={this.handleChange}
                             type="text"
                             placeholder="image"
                             label='image' />
-
 
                         <input
                             name="description"
@@ -93,8 +95,8 @@ class PostForm extends React.Component {
                 </div >
 
 
-            </div >
+            </ >
         )
     }
 }
-export default PostForm
+export default DealForm

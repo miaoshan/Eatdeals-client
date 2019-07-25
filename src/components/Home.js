@@ -34,6 +34,7 @@ class Home extends React.Component {
     })
       .then(resp => resp.json())
       .then(data => {
+
         this.setState({ savedRestaurants: [...this.state.savedRestaurants], data })
 
       })

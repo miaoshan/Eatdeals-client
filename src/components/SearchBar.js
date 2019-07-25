@@ -33,7 +33,6 @@ const SearchBar = (props) => {
                         <option value="Price">Average cost per person High-Low</option>
                         <option value="Review">Review High-Low</option>
 
-                        {/* <option value="GBP">United Kingdom Pounds</option> */}
                     </select>
                 </span>
             </div>

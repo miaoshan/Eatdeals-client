@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import RestaurantContainer from './RestaurantContainer';
-import PostContainer from './PostContainer';
+
 
 import SearchBar from '../components/SearchBar';
-import InputUI from '../components/InputUI';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
+import DealForm from '../components/DealForm';
+import DealContainter from './DealContainer';
 
 const mapStyles = {
     width: '100%',
@@ -21,9 +22,12 @@ class MainContainer extends Component {
             searchTerm: "",
             clicked: false,
             selectedRestaurant: null,
-            posts: []
+            deals: []
+
         }
     }
+
+
 
     // --------------------------------------------------------------------------- searching 
     // selectRestaurant = (restaurant) => {
@@ -72,35 +76,17 @@ class MainContainer extends Component {
 
 
         }
-        return this.state.restaurants.sort(sortFunctions[this.state.sortBy])
+        return this.props.restaurants.sort(sortFunctions[this.state.sortBy])
     }
 
-    fetchRestaurants = () => {
-        return fetch("http://localhost:3000/restaurants")
-            .then(resp => resp.json())
-    }
 
-    fetchPosts = () => {
-        return fetch("http://localhost:3000/posts")
-            .then(resp => resp.json())
-    }
-
-    componentDidMount() {
-        this.fetchRestaurants()
-            .then(restaurants => {
-                this.fetchPosts()
-                    .then(posts => {
-                        this.setState({ restaurants: restaurants, posts: posts })
-                    })
-            })
-    }
 
     finalRestaurantsList = () => {
         return this.filterBySearchTerm(this.getFilteredRestaurants(this.sortRestaurants()))
     }
 
     filterBySearchTerm = collection => {
-        return collection.filter(restaurant => restaurant.location.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
+        return collection.filter(restaurant => restaurant.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
     }
 
 
@@ -115,25 +101,28 @@ class MainContainer extends Component {
     // }
 
     render() {
+        console.log(this.props.getDeals())
         return (
             <div>
                 <SearchBar
                     setFilter={this.setFilter} setSortBy={this.setSortBy}
                     updateSearchTerm={this.updateSearchTerm}
                     selectRestaurant={this.selectRestaurant}
-                ></SearchBar><InputUI />
+                ></SearchBar>
                 <RestaurantContainer restaurants={this.finalRestaurantsList()} searchTerm={this.state.searchTerm}
-                    deselectRestaurant={this.deselectRestaurant} selectRestaurant={this.selectRestaurant} /><br />
-                <PostContainer posts={this.state.posts} />
+                    deselectRestaurant={this.deselectRestaurant} selectRestaurant={this.selectRestaurant} />
+                <DealContainter deals={this.props.getDeals} />
 
-                <Map
+
+
+                {/* <Map
                     google={this.props.google}
                     zoom={18}
                     style={mapStyles}
                     initialCenter={{ lat: 51.509865, lng: -0.118092 }}
-                ></Map>
+                ></Map> */}
 
-            </div>
+            </div >
         )
     }
 }

@@ -33,7 +33,7 @@ function NavBar() {
                     </li>
                 </Link>
 
-                <Link style={navStyle} to="/postadeal">
+                {/* <Link style={navStyle} to="/postadeal">
                     <li className="navButtons">
                         <img
                             className="navImage"
@@ -41,7 +41,7 @@ function NavBar() {
                             alt="Home page"
                         />
                     </li>
-                </Link>
+                </Link> */}
 
                 <Link style={navStyle} to="/login">
                     <li>
