@@ -10,6 +10,7 @@ import MainContainer from "./MainContainer";
 import _ from 'lodash';
 import RestaurantSpec from '../components/RestaurantSpec';
 import DealSpec from '../components/DealSpec';
+import MyDeal from '../components/MyDeal';
 
 class App extends React.Component {
   state = {
@@ -137,6 +138,9 @@ class App extends React.Component {
           <Route path="/deals/:id" render={(routerProps) => <DealSpec {...routerProps} />} />
           <Route path="/postadeal" render={(routerProps) => <DealForm a id={this.state.id} restaurants={this.state.restaurants}{...routerProps} getRestaurantsAndDeals={this.getRestaurantsAndDeals.bind(this)} />} />
           <Route path="/login" component={(routerProps) => <Login {...routerProps} saveUser={this.saveUser.bind(this)} />} />
+          <Route path="/mydeal" render={(routerProps) => <MyDeal{...routerProps} />} />
+
+
           <Route component={() => <h1>Page not found.</h1>} />
         </Switch>
       </div>

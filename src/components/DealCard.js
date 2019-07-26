@@ -1,6 +1,6 @@
-import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Card, Icon, Image } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const CardExampleCard = (props) => (
     <Card>
@@ -8,7 +8,8 @@ const CardExampleCard = (props) => (
         <Card.Content>
             <Card.Header>
                 <Link to={`/deals/${props.deal.id}`} >
-                    {props.deal.description}
+                    {props.deal.description}<br />
+                    View Deal
                 </Link>
             </Card.Header>
         </Card.Content>

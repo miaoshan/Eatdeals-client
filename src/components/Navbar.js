@@ -43,6 +43,18 @@ function NavBar(props) {
                     </li>
                 </Link> : ""}
 
+
+                {props.loggedin ? < Link style={navStyle} to="/mydeal">
+                    <li className="navButtons">
+                        <img
+                            className="navImage"
+                            src="https://media-public.canva.com/MAB24K-95dA/1/thumbnail_large.png"
+                            alt="Home page"
+                        />
+                    </li>
+                </Link> : ""}
+
+
                 <Link style={navStyle} to="/login">
                     <li>
                         <img
