@@ -7,11 +7,9 @@ const CardExampleCard = (props) => (
         <Image src={props.deal.image} wrapped ui={false} />
         <Card.Content>
             <Card.Header>
-                <Link to={`/restaurants/${props.deal.id}`} >
+                <Link to={`/restaurants/${props.deal.id}`}>
                     {props.deal.description}
                 </Link>
-
-                {/* <Card.Description>{props.deal.description}</Card.Description> */}
             </Card.Header>
 
 

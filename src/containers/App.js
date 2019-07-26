@@ -7,7 +7,8 @@ import api from "../util/api";
 import Login from "../components/Login";
 import "../App.css";
 import MainContainer from "./MainContainer";
-import _ from 'lodash'
+import _ from 'lodash';
+import RestaurantDealSpec from '../components/RestaurantDealSpec';
 
 class App extends React.Component {
   state = {
@@ -16,7 +17,8 @@ class App extends React.Component {
     id: "",
     password: "",
     sortBy: "All",
-    restaurants: []
+    restaurants: [],
+    // restaurant: null
   };
 
   componentDidMount() {
@@ -108,20 +110,19 @@ class App extends React.Component {
 
   getDeals = () => {
     const deals = _.flatten(this.state.restaurants.map(restaurant => restaurant.deals))
-    debugger
+    // debugger
     return deals
   }
 
   getRestaurantsAndDeals = () => {
-    debugger
+    // debugger
     fetch("http://localhost:3000/restaurants")
       .then(resp => resp.json())
       .then(data => {
-        debugger
+        // debugger
         this.setState({ restaurants: data });
       })
   }
-
 
 
   render() {
@@ -133,7 +134,7 @@ class App extends React.Component {
         <Switch>
           {/* <Route exact path="/" component={Home} /> */}
           <Route path="/home" render={(routerProps) => <MainContainer getDeals={this.getDeals.bind(this)} restaurants={this.state.restaurants} posts={this.state.posts} />} />
-          <Route path="/restaurants/:id" render={(routerProps) => <MainContainer restaurants={this.state.restaurants} posts={this.state.posts} />} />
+          <Route path="/restaurants/:id" render={(routerProps) => <RestaurantDealSpec {...routerProps} />} />
           <Route path="/postadeal" render={(routerProps) => <DealForm a id={this.state.id} restaurants={this.state.restaurants}{...routerProps} getRestaurantsAndDeals={this.getRestaurantsAndDeals.bind(this)} />} />
           <Route path="/login" component={(routerProps) => <Login {...routerProps} saveUser={this.saveUser.bind(this)} />} />
           <Route component={() => <h1>Page not found.</h1>} />
