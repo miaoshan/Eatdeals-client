@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom"; // get access to match,location and history.
-import Home from "../components/Home";
 import Navbar from "../components/Navbar";
 import DealForm from "../components/DealForm";
 import Header from "../pages/Header";
@@ -35,13 +34,13 @@ class App extends React.Component {
     });
 
 
-
     this.fetchRestaurants()
       .then(restaurants => {
         this.setState({ restaurants: restaurants })
       })
-
   }
+
+
 
   saveUser(user) {
     console.log(user)
@@ -50,7 +49,6 @@ class App extends React.Component {
       username: user.username
     })
   };
-
 
 
 
@@ -110,24 +108,35 @@ class App extends React.Component {
 
   getDeals = () => {
     const deals = _.flatten(this.state.restaurants.map(restaurant => restaurant.deals))
+    debugger
     return deals
   }
 
+  getRestaurantsAndDeals = () => {
+    debugger
+    fetch("http://localhost:3000/restaurants")
+      .then(resp => resp.json())
+      .then(data => {
+        debugger
+        this.setState({ restaurants: data });
+      })
+  }
+
+
+
   render() {
     this.getDeals()
+
     return (
       <div className="App">
-        <Navbar />
+        <Navbar loggedin={this.state.logged_in} />
         <Switch>
-          <Route exact path="/" component={Home} />
+          {/* <Route exact path="/" component={Home} /> */}
           <Route path="/home" render={(routerProps) => <MainContainer getDeals={this.getDeals.bind(this)} restaurants={this.state.restaurants} posts={this.state.posts} />} />
           <Route path="/restaurants/:id" render={(routerProps) => <MainContainer restaurants={this.state.restaurants} posts={this.state.posts} />} />
-          <Route path="/postadeal" render={(routerProps) => <DealForm a id={this.state.id} restaurants={this.state.restaurants}{...routerProps} />} />
+          <Route path="/postadeal" render={(routerProps) => <DealForm a id={this.state.id} restaurants={this.state.restaurants}{...routerProps} getRestaurantsAndDeals={this.getRestaurantsAndDeals.bind(this)} />} />
           <Route path="/login" component={(routerProps) => <Login {...routerProps} saveUser={this.saveUser.bind(this)} />} />
           <Route component={() => <h1>Page not found.</h1>} />
-
-
-
         </Switch>
       </div>
 

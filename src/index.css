@@ -222,15 +222,24 @@ input:hover {
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
 .searchBar{
   display: flex;
   flex-direction: column; 
   width: 200px;
   justify-content: center;
   text-align: center
-
-
 }
+
+
+.dealContainer{
+
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 
 .submitButton{
   

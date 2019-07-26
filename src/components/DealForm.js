@@ -45,6 +45,7 @@ class DealForm extends React.Component {
 
             .then((json) => {
                 console.log(json)
+                this.props.getRestaurantsAndDeals()
                 this.props.history.push("home")
             })   // submit post then redirect to "/home"
     }
@@ -54,6 +55,8 @@ class DealForm extends React.Component {
 
         this.addPostToServer()
     }
+
+
 
     render() {
         return (

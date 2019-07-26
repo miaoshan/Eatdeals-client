@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function NavBar() {
+function NavBar(props) {
     const navStyle = {
         color: "white"
     };
@@ -33,7 +33,7 @@ function NavBar() {
                     </li>
                 </Link>
 
-                {/* <Link style={navStyle} to="/postadeal">
+                {props.loggedin ? < Link style={navStyle} to="/postadeal">
                     <li className="navButtons">
                         <img
                             className="navImage"
@@ -41,7 +41,7 @@ function NavBar() {
                             alt="Home page"
                         />
                     </li>
-                </Link> */}
+                </Link> : ""}
 
                 <Link style={navStyle} to="/login">
                     <li>
@@ -53,7 +53,7 @@ function NavBar() {
                     </li>
                 </Link>
             </ul>
-        </nav>
+        </nav >
     );
 }
 

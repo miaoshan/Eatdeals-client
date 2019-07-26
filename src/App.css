@@ -47,20 +47,13 @@
 
 }
 
-.restaurantContainer{
 
-  display: flex;
-  flex-direction: row; 
-  flex-wrap: wrap;
-  justify-content: space-around;
+
+.submitButton{
+  
+  width: 100px
 }
 
 
 
-.dealContainer{
 
-  display: flex;
-  flex-direction: row; 
-  flex-wrap: wrap;
-  justify-content: space-around;
-}

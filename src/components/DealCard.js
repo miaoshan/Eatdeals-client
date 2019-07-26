@@ -19,4 +19,4 @@ const CardExampleCard = (props) => (
     </Card>
 )
 
-export default CardExampleCard
+export default CardExampleCard 

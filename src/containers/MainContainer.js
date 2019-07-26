@@ -91,19 +91,10 @@ class MainContainer extends Component {
 
 
 
-    // getUserPosts = () => {
-    //     const token = localStorage.getItem("token");
-    //     api
-    //         .getPosts(token)
-    //         .then(posts => {
-    //             this.setState({ posts }, () => console.log(this.state.posts))
-    //         })
-    // }
-
     render() {
         console.log(this.props.getDeals())
         return (
-            <div>
+            <div className="searchAndFilter">
                 <SearchBar
                     setFilter={this.setFilter} setSortBy={this.setSortBy}
                     updateSearchTerm={this.updateSearchTerm}

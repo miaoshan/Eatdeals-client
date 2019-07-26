@@ -7,12 +7,11 @@ class DealContainer extends Component {
         const deals = this.props.deals()
         return (
             <div className="dealContainer">
-                <ul>
-                    {
-                        // deals.map((deal, index) => <li key={index}>{deal.description}img{deal.image}</li>)
-                        deals.map((deal, index) => <DealCard key={index} deal={deal} />)
-                    }
-                </ul>
+
+                {
+                    deals.map((deal, index) => <DealCard key={index} deal={deal} />)
+                }
+
             </div>
         );
     }
