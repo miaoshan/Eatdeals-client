@@ -10,8 +10,6 @@ const CardExampleCard = (props) => (
                 <Link to={`/restaurants/${props.restaurant.id}`} >
                     {props.restaurant.name}
                 </Link>
-
-                <Card.Description>{props.restaurant.description}</Card.Description>
             </Card.Header>
 
 

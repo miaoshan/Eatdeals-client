@@ -1,5 +1,5 @@
 import React from 'react';
-import RestaurantDealSpecCard from './RestaurantDealSpecCard'
+import RestaurantSpecCard from './RestaurantSpecCard'
 
 class RestaurantDealSpec extends React.Component {
 
@@ -7,7 +7,7 @@ class RestaurantDealSpec extends React.Component {
         restaurant: {}
     }
 
-    getSingleRestaurantAndDeal = (id) => {
+    getSingleRestaurant = (id) => {
         fetch(`http://localhost:3000/restaurants/${id}`)
             .then(resp => resp.json())
             .then(data => {
@@ -16,7 +16,7 @@ class RestaurantDealSpec extends React.Component {
     }
 
     componentDidMount() {
-        this.getSingleRestaurantAndDeal(this.props.match.params.id)
+        this.getSingleRestaurant(this.props.match.params.id)
     }
 
     render() {
@@ -24,7 +24,7 @@ class RestaurantDealSpec extends React.Component {
         return (
             <div>
                 <div className="" >
-                    <RestaurantDealSpecCard restaurant={restaurant} />
+                    <RestaurantSpecCard restaurant={restaurant} />
                 </div>
             </div >
 

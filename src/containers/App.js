@@ -8,7 +8,8 @@ import Login from "../components/Login";
 import "../App.css";
 import MainContainer from "./MainContainer";
 import _ from 'lodash';
-import RestaurantDealSpec from '../components/RestaurantDealSpec';
+import RestaurantSpec from '../components/RestaurantSpec';
+import DealSpec from '../components/DealSpec';
 
 class App extends React.Component {
   state = {
@@ -53,13 +54,11 @@ class App extends React.Component {
   };
 
 
-
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
-
 
 
   handleLogOut = () => {
@@ -132,9 +131,10 @@ class App extends React.Component {
       <div className="App">
         <Navbar loggedin={this.state.logged_in} />
         <Switch>
-          {/* <Route exact path="/" component={Home} /> */}
+
           <Route path="/home" render={(routerProps) => <MainContainer getDeals={this.getDeals.bind(this)} restaurants={this.state.restaurants} posts={this.state.posts} />} />
-          <Route path="/restaurants/:id" render={(routerProps) => <RestaurantDealSpec {...routerProps} />} />
+          <Route path="/restaurants/:id" render={(routerProps) => <RestaurantSpec {...routerProps} />} />
+          <Route path="/deals/:id" render={(routerProps) => <DealSpec {...routerProps} />} />
           <Route path="/postadeal" render={(routerProps) => <DealForm a id={this.state.id} restaurants={this.state.restaurants}{...routerProps} getRestaurantsAndDeals={this.getRestaurantsAndDeals.bind(this)} />} />
           <Route path="/login" component={(routerProps) => <Login {...routerProps} saveUser={this.saveUser.bind(this)} />} />
           <Route component={() => <h1>Page not found.</h1>} />
