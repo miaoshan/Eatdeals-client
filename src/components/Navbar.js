@@ -27,7 +27,7 @@ function NavBar(props) {
                     <li className="navButtons">
                         <img
                             className="navImage"
-                            src="https://media-public.canva.com/MACF3-J8ZPM/1/thumbnail_large.png"
+                            src="https://media-public.canva.com/MADQ0damsO8/1/thumbnail_large.png"
                             alt="Home page"
                         />
                     </li>
@@ -37,22 +37,36 @@ function NavBar(props) {
                     <li className="navButtons">
                         <img
                             className="navImage"
-                            src="https://media-public.canva.com/MABokBeUXA8/1/thumbnail.png"
-                            alt="Home page"
+                            // src="https://media-public.canva.com/MABIMab2NkQ/1/thumbnail.png"
+                            src="https://media-public.canva.com/MAC2kikNtvY/1/thumbnail_large.png"
+                            alt="postdealpage"
                         />
                     </li>
                 </Link> : ""}
+
+                <Link style={navStyle} to="/deals">
+                    <li>
+                        <img
+                            className="navImage"
+                            src="https://media-public.canva.com/MABG-ySdtoA/1/thumbnail.png"
+                            alt="alldealspage"
+                        />
+                    </li>
+                </Link>
 
 
                 {props.loggedin ? < Link style={navStyle} to="/mydeal">
                     <li className="navButtons">
                         <img
                             className="navImage"
-                            src="https://media-public.canva.com/MAB24K-95dA/1/thumbnail_large.png"
-                            alt="Home page"
+                            src="https://media-public.canva.com/MAC2kmCWEM4/2/thumbnail_large.png"
+                            alt="mydealpage"
                         />
                     </li>
                 </Link> : ""}
+
+
+
 
 
                 <Link style={navStyle} to="/login">

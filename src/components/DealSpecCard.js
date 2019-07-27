@@ -22,21 +22,22 @@ const DealSpecCard = (props) => {
                     <Card.Header>
                         {console.log("?")}
                         <Card.Description>{name}</Card.Description><br />
-                        <Card.Description>Location:{location}</Card.Description><br />
+                        <Card.Description>{location}</Card.Description><br />
                         <Card.Description>Deal: {description}</Card.Description><br />
                         <Card.Description>Review: {review}</Card.Description><br />
                         <Card.Description>Cost Per Person: £{average_cost_per_person}</Card.Description>
                     </Card.Header>
 
                 </Card.Content>
-                {/* <Map
-                    google={google}
-                    zoom={18}
-                    style={mapStyles}
-                    initialCenter={{ lat: 51.509865, lng: -0.118092 }}
-                ></Map> */}
+
 
             </Card>
+            <Map
+                google={google}
+                zoom={18}
+                style={mapStyles}
+                initialCenter={{ lat: 51.509865, lng: -0.118092 }}
+            ></Map>
         </div>
     )
 }

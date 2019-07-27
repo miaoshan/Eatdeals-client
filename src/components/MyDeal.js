@@ -30,9 +30,6 @@ class MyDeal extends React.Component {
         this.getUsersDeal(this.props.user_id)
     }
 
-    // componentDidUpdate() {
-    //     this.getUsersDeal(this.props.user_id)
-    // }
 
     render() {
         const { deals } = this.state;

@@ -11,6 +11,9 @@ import _ from 'lodash';
 import RestaurantSpec from '../components/RestaurantSpec';
 import DealSpec from '../components/DealSpec';
 import MyDeal from '../components/MyDeal';
+import EditMyDeal from '../components/EditMyDeal';
+import DealContainer from "./DealContainer";
+import RestaurantContainer from "./RestaurantContainer";
 
 class App extends React.Component {
   state = {
@@ -20,6 +23,7 @@ class App extends React.Component {
     password: "",
     sortBy: "All",
     restaurants: [],
+    deals: []
     // restaurant: null
   };
 
@@ -80,65 +84,28 @@ class App extends React.Component {
   }
 
 
-
-  addDealToServer = (e, state) => {
-    let deal = {
-      deal: {
-        user_id: this.props.id,
-        description: this.state.description,
-        restaurant_id: this.state.restaurant_id,
-        image: this.state.image
-
-      }
-    }
-    e.preventDefault()
-    return fetch('http://localhost:3000/deals', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': localStorage.getItem('token')
-      },
-      body: JSON.stringify(deal)
-    }).then(resp => resp.json())
-      .then(data => this.setState({
-        deals: [...this.state.deals, data]
-      }))
-
-      .then(() => this.props.history.push("home"))   // submit post then redirect to "/home"
-  }
   // ---------------------------------------------------------------------------------  authentication
 
-  getDeals = () => {
-    const deals = _.flatten(this.state.restaurants.map(restaurant => restaurant.deals))
-    // debugger
-    return deals
-  }
 
-  getRestaurantsAndDeals = () => {
-    // debugger
-    fetch("http://localhost:3000/restaurants")
-      .then(resp => resp.json())
-      .then(data => {
-        // debugger
-        this.setState({ restaurants: data });
-      })
-  }
 
 
   render() {
-    this.getDeals()
+
 
     return (
       <div className="App">
         <Navbar loggedin={this.state.logged_in} />
         <Switch>
 
-          <Route path="/home" render={(routerProps) => <MainContainer getDeals={this.getDeals.bind(this)} restaurants={this.state.restaurants} deals={this.state.deals} />} />
+          <Route path="/home" render={(routerProps) => <RestaurantContainer restaurants={this.state.restaurants} />} />
           <Route path="/restaurants/:id" render={(routerProps) => <RestaurantSpec {...routerProps} />} />
+          <Route path="/deals/:id/edit" component={(routerProps) => <EditMyDeal {...routerProps} user_id={this.state.id} username={this.state.username} />} />
           <Route path="/deals/:id" component={(routerProps) => <DealSpec {...routerProps} />} />
-          <Route path="/postadeal" render={(routerProps) => <DealForm a id={this.state.id} username={this.state.username} restaurants={this.state.restaurants}{...routerProps} getRestaurantsAndDeals={this.getRestaurantsAndDeals.bind(this)} />} />
+          <Route path="/deals" component={(routerProps) => <DealContainer {...routerProps} user_id={this.state.id} username={this.state.username} />} />
+          <Route path="/postadeal" render={(routerProps) => <DealForm a id={this.state.id} username={this.state.username} restaurants={this.state.restaurants}{...routerProps} />} />
           <Route path="/login" component={(routerProps) => <Login {...routerProps} saveUser={this.saveUser.bind(this)} />} />
           <Route path="/mydeal" component={(routerProps) => <MyDeal {...routerProps} user_id={this.state.id} username={this.state.username} />} />
+
 
 
           <Route component={() => <h1>Page not found.</h1>} />
