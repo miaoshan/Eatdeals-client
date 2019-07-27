@@ -252,7 +252,11 @@ input:hover {
   height: 100vh;
 }
 
-.dealspeccard{
-
-
+.mydealcard
+{
+display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: stretch;
 }

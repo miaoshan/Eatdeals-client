@@ -24,8 +24,8 @@ class DealForm extends React.Component {
 
 
 
-    addPostToServer = (e) => {
-        let post = {
+    addDealToServer = (e) => {
+        let deal = {
             deal: {
                 user_id: this.props.id,
                 description: this.state.description,
@@ -40,7 +40,7 @@ class DealForm extends React.Component {
                 'Content-Type': 'application/json',
                 'Authorization': localStorage.getItem('token')
             },
-            body: JSON.stringify(post)
+            body: JSON.stringify(deal)
         }).then(resp => resp.json())
 
             .then((json) => {
@@ -53,7 +53,7 @@ class DealForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
 
-        this.addPostToServer()
+        this.addDealToServer()
     }
 
 
@@ -62,18 +62,14 @@ class DealForm extends React.Component {
         return (
             <>
                 <div className="dealform">
-                    <form onSubmit={this.addPostToServer} className="searchBar" >
+                    <h2> {`Welcome to Eatdeals,${this.props.username}!`}</h2>
+                    < form onSubmit={this.addDealToServer} className="searchBar" >
 
-                        <span className="post">
+                        <span className="deal">
                             <select name="restaurant_id" onChange={this.handleChange} >
                                 {this.props.restaurants.map(rest => <option value={rest.id}>{rest.name}</option>)}
-
-
                             </select>
                         </span>
-
-
-
                         <input
                             name="image" onChange={this.handleChange}
                             className="inputBox"
@@ -90,14 +86,13 @@ class DealForm extends React.Component {
                             placeholder="description"
                             label='description' />
                         <input className="submitButton" type="submit" />
-                        <div className="post">
+                        <button onClick={this.handleLogOut}>Log out</button>
 
+                        <div className="deal">
                         </div>
                     </form >
 
                 </div >
-
-
             </ >
         )
     }

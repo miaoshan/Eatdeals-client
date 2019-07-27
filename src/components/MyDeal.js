@@ -9,26 +9,46 @@ class MyDeal extends React.Component {
         deals: []
     }
 
-    getSingleRestaurant = (id) => {
-        fetch(`http://localhost:3000/deals/${id}`)
+    getUsersDeal = (id) => {
+        fetch(`http://localhost:3000/deals`)
             .then(resp => resp.json())
+
+            .then(deals => {
+                // debugger
+                return deals.filter(deal => deal.user_id == id)
+            })
+
             .then(data => {
+                // debugger
                 this.setState({ deals: data })
             })
     }
 
+
+
     componentDidMount() {
-        this.getSingleRestaurant(this.props.match.params.id)
+        this.getUsersDeal(this.props.user_id)
     }
 
+    // componentDidUpdate() {
+    //     this.getUsersDeal(this.props.user_id)
+    // }
+
     render() {
-        const { restaurant } = this.state;
+        const { deals } = this.state;
+
         return (
-            <div>
-                <div className="" >
-                    <MyDealCard />
-                </div>
-            </div >
+            <div className="MyDeal" >
+                <h2> {`Hi,${this.props.username}! Your deals!`}</h2>
+
+
+                {/* <button onClick={() => this.getUsersDeal(this.props.user_id)}>refresh</button> */}
+                {
+                    this.state.deals
+                        .map((deal, index) => <MyDealCard key={index} deal={deal} />)
+                }
+
+            </div>
 
         );
     }

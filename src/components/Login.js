@@ -10,6 +10,7 @@ class Login extends React.Component {
     state = {
         username: "",
         password: "",
+        logged_in: false,
     }
 
 
@@ -22,7 +23,7 @@ class Login extends React.Component {
                 this.setState({ username: "", password: "" });
             } else {
                 localStorage.setItem("token", data.jwt);
-                this.setState({ logged_in: true, username: data.username });
+                this.setState({ logged_in: true });
                 this.props.saveUser(data)
                 // debugger
                 this.props.history.push('/postadeal')
@@ -68,40 +69,42 @@ class Login extends React.Component {
     render() {
         return (
             <div className="nav">
-                {this.state.logged_in ? (
+                {this.state.logged_in &&
                     <div>
                         <h2> {`Welcome to Eatdeals,${this.state.username}!`}</h2>
                         <button onClick={this.handleLogOut}>Log out</button>
                         <p className="nav-links"><Link to="/postadeal"> Post an awesome Deal!</Link></p>
 
-                    </div>
-                ) : (
-                        <form>
-                            <label htmlFor="username">Username:</label>
-                            <input
-                                onChange={this.handleChange}
-                                id="username"
-                                type="text"
-                                name="username"
-                                value={this.state.username}
-                            />
-                            <label htmlFor="password">Password:</label>
-                            <input
-                                onChange={this.handleChange}
-                                id="password"
-                                type="password"
-                                name="password"
-                                value={this.setState.password}
-                            />
-                            <button onClick={this.onLoginClicked}>Log in</button>
-                            <button onClick={this.onSignupClicked}>Sign up</button>
+                    </div>}
 
-                        </form>
-                    )}
+                <form>
+                    <label htmlFor="username">Username:</label>
+                    <input
+                        onChange={this.handleChange}
+                        id="username"
+                        type="text"
+                        name="username"
+                        value={this.state.username}
+                    />
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        onChange={this.handleChange}
+                        id="password"
+                        type="password"
+                        name="password"
+                        value={this.setState.password}
+                    />
+                    <button onClick={this.onLoginClicked}>Log in</button>
+                    <button onClick={this.onSignupClicked}>Sign up</button>
+
+                </form>
+
             </div>
+
         );
     }
 }
+
 
 export default Login;
 

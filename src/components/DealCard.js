@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-const CardExampleCard = (props) => (
+const DealCard = (props) => (
     <Card>
         <Image src={props.deal.image} wrapped ui={false} />
         <Card.Content>
@@ -16,4 +16,4 @@ const CardExampleCard = (props) => (
     </Card>
 )
 
-export default CardExampleCard 
+export default DealCard 

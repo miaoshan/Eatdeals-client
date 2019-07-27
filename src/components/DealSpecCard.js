@@ -8,29 +8,39 @@ const mapStyles = {
     height: '80%',
 };
 
-const CardExampleCard = (props) => (
-    <div className="DealSpecCard" >
-        <Card>
-            <Image src={props.deal.image} wrapped ui={false} />
-            <Card.Content>
-                <Card.Header>
+const DealSpecCard = (props) => {
+    console.log(props)
+    const { deal, google } = props
+    const { image, restaurant, description } = deal
+    const { name, location, review, average_cost_per_person } = restaurant
 
-                    {/* <Card.Description>Location  {props.deal.restaurant.location}</Card.Description><br /> */}
-                    <Card.Description>Deal: {props.deal.description}</Card.Description><br />
-                    {/* <Card.Description>Review {props.restaurant.review}</Card.Description><br /> */}
-                    {/* <Card.Description>Cost Per Person {props.restaurant.average_cost_per_person}</Card.Description> */}
-                </Card.Header>
-                <Map
-                    google={props.google}
+    return (
+        <div className="DealSpecCard" >
+            <Card>
+                <Image src={image} wrapped ui={false} />
+                <Card.Content>
+                    <Card.Header>
+                        {console.log("?")}
+                        <Card.Description>{name}</Card.Description><br />
+                        <Card.Description>Location:{location}</Card.Description><br />
+                        <Card.Description>Deal: {description}</Card.Description><br />
+                        <Card.Description>Review: {review}</Card.Description><br />
+                        <Card.Description>Cost Per Person: £{average_cost_per_person}</Card.Description>
+                    </Card.Header>
+
+                </Card.Content>
+                {/* <Map
+                    google={google}
                     zoom={18}
                     style={mapStyles}
                     initialCenter={{ lat: 51.509865, lng: -0.118092 }}
-                ></Map>
-            </Card.Content>
-        </Card>
-    </div>
-)
+                ></Map> */}
+
+            </Card>
+        </div>
+    )
+}
 
 export default GoogleApiWrapper({
     apiKey: 'AIzaSyD31RrQSrrMtkjGxt6w4l48M8Nll3ljRgY'
-})(CardExampleCard) 
+})(DealSpecCard) 

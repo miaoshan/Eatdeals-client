@@ -4,23 +4,45 @@ import { Link } from 'react-router-dom';
 
 
 
-const CardExampleCard = (props) => (
-    <Card>
-        {/* <Image src={props.deal.image} wrapped ui={false} /> */}
-        <Card.Content>
-            <Card.Header>
+const MyDealCard = (props) => {
 
-                {/* <Card.Description>Location  {props.deal.restaurant.location}</Card.Description><br /> */}
-                <Card.Description>Deal: {props.deal.description}</Card.Description><br />
-                {/* <Card.Description>Review {props.restaurant.review}</Card.Description><br /> */}
-                {/* <Card.Description>Cost Per Person {props.restaurant.average_cost_per_person}</Card.Description> */}
-            </Card.Header>
-        </Card.Content>
-    </Card>
-)
+    console.log(props)
+    const { deal } = props
+    const { image, restaurant, description } = deal
+    const { name, location, review, average_cost_per_person } = restaurant
+    return (
+        <div className="mydealcard">
+
+            < Card >
+
+                <Link to={`/deals/${props.deal.id}`} ></Link>
+                <Image src={props.deal.image} wrapped ui={false} />
+
+                <Card.Content>
+
+                    <Card.Header>
+                        {console.log("?")}
+                        <Card.Description>{name}</Card.Description><br />
+                        <Card.Description>Location:{location}</Card.Description><br />
+                        <Card.Description>Deal: {description}</Card.Description><br />
+                        <Card.Description>Review: {review}</Card.Description><br />
+                        <Card.Description>Cost Per Person: £{average_cost_per_person}</Card.Description>
+                        <Link to={`/deals/${props.deal.id}/edit`} >
+                            <br />
+                            Edit
+                </Link>
+
+                    </Card.Header>
+
+                </Card.Content>
+            </Card >
+
+        </div>
+
+    )
+}
 
 
 
 
-
-export default CardExampleCard;
+export default MyDealCard;

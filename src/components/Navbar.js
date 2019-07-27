@@ -15,7 +15,7 @@ function NavBar(props) {
                         className="homeImage"
                         src="https://cdn1.iconfinder.com/data/icons/pet-me-vol-1/64/meong-24-512.png"
                         alt="Home Image" />
-                    <div>Eatdeal</div>
+                    <div>Eatdeals</div>
                 </h3>
             </Link>
 

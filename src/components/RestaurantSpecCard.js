@@ -8,7 +8,7 @@ const mapStyles = {
     height: '80%',
 };
 
-const CardExampleCard = (props) => {
+const RestaurantSpecCard = (props) => {
     return (
         <Card>
             <Image src={props.restaurant.image} wrapped ui={false} />
@@ -18,7 +18,7 @@ const CardExampleCard = (props) => {
                     <Card.Description>{props.restaurant.location}</Card.Description><br />
                     <Card.Description>Deal: {props.restaurant.description}</Card.Description><br />
                     <Card.Description>Review: {props.restaurant.review}</Card.Description><br />
-                    <Card.Description>Cost Per Person: {props.restaurant.average_cost_per_person}</Card.Description>
+                    <Card.Description>Cost Per Person: £{props.restaurant.average_cost_per_person}</Card.Description>
                 </Card.Header>
 
                 <Map
@@ -35,5 +35,5 @@ const CardExampleCard = (props) => {
 
 export default GoogleApiWrapper({
     apiKey: 'AIzaSyD31RrQSrrMtkjGxt6w4l48M8Nll3ljRgY'
-})(CardExampleCard)
+})(RestaurantSpecCard)
 
