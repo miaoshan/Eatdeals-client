@@ -17,13 +17,17 @@ const MyDealCard = (props) => {
     const { name, location, review, average_cost_per_person } = restaurant
 
 
-    // deleteMyDeal(id){
-    //     const image = e.target.image;
-    //     const description = e.target.description;
-    //     const options = {
-    //         method: "DELETE"
-    //     }
-    // }
+
+
+
+    const deleteMyDeal = id => {
+        return fetch(`http://localhost:3000/deals/${id}`, {
+            method: "DELETE"
+        })
+            .then(respo => respo.json());
+
+    };
+
 
 
 
@@ -46,7 +50,7 @@ const MyDealCard = (props) => {
                         <Card.Description>Review: {review}</Card.Description><br />
                         <Card.Description>Cost Per Person: £{average_cost_per_person}</Card.Description>
                         <Link to={`/deals/${props.deal.id}/edit`} ><br />Edit</Link><br />
-                        <button onClick={"deleteMyDeal"}>Delete</button>
+                        <button onClick={() => deleteMyDeal(props.deal.id)}>Delete</button>
 
 
                     </Card.Header>

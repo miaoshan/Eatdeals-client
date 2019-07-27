@@ -16,8 +16,7 @@ class EditMyDeal extends React.Component {
             [e.target.name]: e.target.value
 
         });
-        console.log("p")
-    };
+    }
 
     editMyDealOnServer(id) {
         const options = {

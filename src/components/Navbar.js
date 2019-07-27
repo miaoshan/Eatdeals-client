@@ -27,7 +27,8 @@ function NavBar(props) {
                     <li className="navButtons">
                         <img
                             className="navImage"
-                            src="https://media-public.canva.com/MADQ0damsO8/1/thumbnail_large.png"
+                            // src="https://media-public.canva.com/MADQ0damsO8/1/thumbnail_large.png"
+                            src="https://media-public.canva.com/MADDqtu_8bU/1/thumbnail_large.png"
                             alt="Home page"
                         />
                     </li>
@@ -38,7 +39,8 @@ function NavBar(props) {
                         <img
                             className="navImage"
                             // src="https://media-public.canva.com/MABIMab2NkQ/1/thumbnail.png"
-                            src="https://media-public.canva.com/MAC2kikNtvY/1/thumbnail_large.png"
+                            // src="https://media-public.canva.com/MAC2kikNtvY/1/thumbnail_large.png"
+                            src="https://media-public.canva.com/MAC2kj4UysQ/1/thumbnail_large.png"
                             alt="postdealpage"
                         />
                     </li>
