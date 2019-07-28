@@ -7,12 +7,11 @@ class DealContainer extends Component {
         deals: []
     }
 
-
     componentDidMount() {
         fetch("http://localhost:3000/deals")
             .then(resp => resp.json())
             .then(data => {
-                // debugger
+
                 this.setState({ deals: data });
             })
     }

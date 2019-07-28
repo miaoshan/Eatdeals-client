@@ -13,7 +13,6 @@ class Login extends React.Component {
         logged_in: false,
     }
 
-
     onLoginClicked = e => {
         // debugger;
         e.preventDefault();

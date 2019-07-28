@@ -23,8 +23,7 @@ class App extends React.Component {
     password: "",
     sortBy: "All",
     restaurants: [],
-
-    // restaurant: null
+    deals: {}
   };
 
   componentDidMount() {
@@ -45,6 +44,7 @@ class App extends React.Component {
     this.fetchRestaurants()
       .then(restaurants => {
         this.setState({ restaurants: restaurants })
+
       })
 
     this.fetchDeals()
@@ -52,7 +52,6 @@ class App extends React.Component {
         this.setState({ deals: deals })
       })
   }
-
 
 
   saveUser(user) {
@@ -82,19 +81,6 @@ class App extends React.Component {
   };
 
 
-
-  fetchRestaurants = () => {
-    return fetch("http://localhost:3000/restaurants")
-      .then(resp => resp.json())
-  }
-
-
-
-
-
-
-
-
   fetchRestaurants = () => {
     return fetch("http://localhost:3000/restaurants")
       .then(resp => resp.json())
@@ -112,14 +98,13 @@ class App extends React.Component {
         <Navbar loggedin={this.state.logged_in} />
         <Switch>
           <Route path="/home" render={() => <RestaurantContainer restaurants={this.state.restaurants} />} />
-          <Route path="/restaurants/:id" render={(routerProps) => <RestaurantSpec {...routerProps} />} />
+          <Route path="/restaurants/:id" render={(routerProps) => <RestaurantSpec {...routerProps} restaurants={this.state.restaurants} />} />
           <Route path="/deals/:id/edit" component={(routerProps) => <EditMyDeal {...routerProps} user_id={this.state.id} username={this.state.username} />} />
           <Route path="/deals/:id" component={(routerProps) => <DealSpec {...routerProps} />} />
           <Route path="/deals" component={(routerProps) => <DealContainer {...routerProps} user_id={this.state.id} username={this.state.username} />} />
           <Route path="/postadeal" render={(routerProps) => <DealForm a id={this.state.id} username={this.state.username} restaurants={this.state.restaurants}{...routerProps} />} />
           <Route path="/login" component={(routerProps) => <Login {...routerProps} saveUser={this.saveUser.bind(this)} />} />
           <Route path="/mydeal" component={(routerProps) => <MyDeal {...routerProps} deals={this.state.deals} user_id={this.state.id} username={this.state.username} />} />
-
           <Route component={() => <h1>Page not found.</h1>} />
         </Switch>
       </div>

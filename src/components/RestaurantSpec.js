@@ -8,6 +8,7 @@ class RestaurantDealSpec extends React.Component {
     }
 
     getSingleRestaurant = (id) => {
+        let that = this
         fetch(`http://localhost:3000/restaurants/${id}`)
             .then(resp => resp.json())
             .then(data => {
@@ -21,14 +22,20 @@ class RestaurantDealSpec extends React.Component {
 
     render() {
         const { restaurant } = this.state;
-        return (
-            <div>
-                <div className="" >
-                    <RestaurantSpecCard restaurant={restaurant} />
-                </div>
+        if (Object.keys(restaurant).length > 0) {
+            return (
+                <div>
+                    <div className="" >
+                        <RestaurantSpecCard restaurant={restaurant} />
+                    </div>
+                </div >
+            );
+        }
+        else {
+            return <div>
             </div >
+        }
 
-        );
     }
 }
 

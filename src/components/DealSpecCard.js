@@ -27,10 +27,7 @@ const DealSpecCard = (props) => {
                         <Card.Description>Review: {review}</Card.Description><br />
                         <Card.Description>Cost Per Person: £{average_cost_per_person}</Card.Description>
                     </Card.Header>
-
                 </Card.Content>
-
-
             </Card>
             <Map
                 google={google}

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import RestaurantContainer from './RestaurantContainer';
-
-
 import SearchBar from '../components/SearchBar';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 import DealForm from '../components/DealForm';
@@ -27,17 +25,11 @@ class MainContainer extends Component {
         }
     }
 
-
-
     // --------------------------------------------------------------------------- searching 
-    // selectRestaurant = (restaurant) => {
-    //     this.setState({ selectedRestaurant: restaurant })
-    // }
+
     selectRestaurant = (event) => {
         event.preventDefault()
-        // this.state.restaurants
-        //     .filter(restaurant => restaurant.name.includes(this.state.searchTerm))     // search function 
-        //     .map((restaurant, index) => < Restaurant key={index} restaurant={restaurant} />)
+
     }
 
     deselectRestaurant = () => {
@@ -66,8 +58,6 @@ class MainContainer extends Component {
         return restaurants.filter(restaurant => restaurant.type === this.state.filterType || this.state.filterType === "All")
     }
 
-    //
-
     sortRestaurants = () => {
         let sortFunctions = {
             "Alphabetically": (a, b) => a.name.localeCompare(b.name),
@@ -80,7 +70,6 @@ class MainContainer extends Component {
     }
 
 
-
     finalRestaurantsList = () => {
         return this.filterBySearchTerm(this.getFilteredRestaurants(this.sortRestaurants()))
     }
@@ -88,7 +77,6 @@ class MainContainer extends Component {
     filterBySearchTerm = collection => {
         return collection.filter(restaurant => restaurant.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
     }
-
 
 
     render() {
@@ -104,14 +92,6 @@ class MainContainer extends Component {
                     deselectRestaurant={this.deselectRestaurant} selectRestaurant={this.selectRestaurant} />
                 <DealContainter />
 
-
-
-                {/* <Map
-                    google={this.props.google}
-                    zoom={18}
-                    style={mapStyles}
-                    initialCenter={{ lat: 51.509865, lng: -0.118092 }}
-                ></Map> */}
 
             </div >
         )

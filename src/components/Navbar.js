@@ -18,10 +18,6 @@ function NavBar(props) {
                     <div>Eatdeals</div>
                 </h3>
             </Link>
-
-
-
-
             <ul className="nav-links">
                 {/* <Link style={navStyle} to="/login">
                     <li className="navButtons">login</li>
@@ -32,7 +28,6 @@ function NavBar(props) {
                         <div className="tooltip-on-hover">
                             <img
                                 className="navImage"
-                                // src="https://media-public.canva.com/MADQ0damsO8/1/thumbnail_large.png"
                                 src="https://media-public.canva.com/MADDqtu_8bU/1/thumbnail_large.png"
                                 alt="Home page"
                             />
@@ -41,15 +36,11 @@ function NavBar(props) {
 
                     </li>
                 </Link>
-
-
                 {props.loggedin ? < Link style={navStyle} to="/postadeal">
                     <li className="navButtons">
                         <div className="tooltip-on-hover">
                             <img
                                 className="navImage"
-                                // src="https://media-public.canva.com/MABIMab2NkQ/1/thumbnail.png"
-                                // src="https://media-public.canva.com/MAC2kikNtvY/1/thumbnail_large.png"
                                 src="https://media-public.canva.com/MAC2kj4UysQ/1/thumbnail_large.png"
                                 alt="postdealpage"
                             />
@@ -84,11 +75,6 @@ function NavBar(props) {
                         <div className="tooltip">My Deals</div>
                     </li>
                 </Link> : ""}
-
-
-
-
-
                 <Link style={navStyle} to="/login">
                     <li>
                         <div className="tooltip-on-hover">

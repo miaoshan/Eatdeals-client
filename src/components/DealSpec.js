@@ -10,7 +10,6 @@ class DealSpec extends React.Component {
     }
 
     getSingleDeal = (id) => {
-        // debugger
         fetch(`http://localhost:3000/deals/${id}`)
             .then(resp => resp.json())
             .then(json => {

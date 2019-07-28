@@ -9,7 +9,6 @@ class EditMyDeal extends React.Component {
 
     }
 
-
     handleChange = e => {
         this.setState({
 
@@ -40,14 +39,10 @@ class EditMyDeal extends React.Component {
             })
     }
 
-
-
     handleSubmit = e => {
         e.preventDefault()
         this.editMyDealOnServer(this.props.match.params.id)
     }
-
-
 
     render() {
         const { restaurant } = this.state;

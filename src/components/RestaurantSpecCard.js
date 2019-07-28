@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Card, Icon, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
@@ -16,7 +17,12 @@ const RestaurantSpecCard = (props) => {
                 <Card.Header>
                     <Card.Description> {props.restaurant.name}</Card.Description><br />
                     <Card.Description>{props.restaurant.location}</Card.Description><br />
-                    <Card.Description>Deal: {props.restaurant.description}</Card.Description><br />
+                    <Card.Description>Deal: {props.restaurant.description}
+                        <ul>
+                            {props.restaurant.deals.map(deal => <li key={deal.id} value={deal.description}></li>)}
+
+                        </ul>
+                    </Card.Description><br />
                     <Card.Description>Review: {props.restaurant.review}</Card.Description><br />
                     <Card.Description>Cost Per Person: £{props.restaurant.average_cost_per_person}</Card.Description>
 
@@ -26,18 +32,18 @@ const RestaurantSpecCard = (props) => {
                     google={props.google}
                     zoom={18}
                     style={mapStyles}
-                    initialCenter={{ lat: 51.509865, lng: -0.118092 }}
+                    initialCenter={{ lat: props.restaurant.latitude, lng: props.restaurant.longitude }}
                 ></Map>
             </Card.Content>
-            <div>
-                <Link to={"https://www.google.com/maps?f=d&daddr=Steeple+Aston+Bicester+Oxfordshire+OX25+5QQ+GB"}>Direction</Link>
-            </div>
+            <Card.Content>
+                {/* <Link to={"https://www.google.com/maps?f=d&daddr=Steeple+Aston+Bicester+Oxfordshire+OX25+5QQ+GB"}>Direction</Link> */}
+            </Card.Content>
         </Card>
-
     )
 }
 
 export default GoogleApiWrapper({
     apiKey: 'AIzaSyD31RrQSrrMtkjGxt6w4l48M8Nll3ljRgY'
 })(RestaurantSpecCard)
+
 

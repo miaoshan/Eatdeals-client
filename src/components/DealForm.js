@@ -12,7 +12,6 @@ class DealForm extends React.Component {
             description: '',
             restaurant_id: '',
             image: '',
-
         };
 
     }
@@ -41,8 +40,8 @@ class DealForm extends React.Component {
             body: JSON.stringify(deal)
         }).then(resp => resp.json())
             .then((json) => {
-                debugger;
-                that.props.history.push("home")
+
+                that.props.history.push("deals")
             })   // submit post then redirect to "/home"
     }
 
