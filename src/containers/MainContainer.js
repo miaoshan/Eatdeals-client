@@ -92,7 +92,7 @@ class MainContainer extends Component {
 
 
     render() {
-        console.log(this.props.getDeals())
+
         return (
             <div className="searchAndFilter">
                 <SearchBar
@@ -102,7 +102,7 @@ class MainContainer extends Component {
                 ></SearchBar>
                 <RestaurantContainer restaurants={this.finalRestaurantsList()} searchTerm={this.state.searchTerm}
                     deselectRestaurant={this.deselectRestaurant} selectRestaurant={this.selectRestaurant} />
-                <DealContainter deals={this.props.getDeals} />
+                <DealContainter />
 
 
 

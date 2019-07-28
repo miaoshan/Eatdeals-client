@@ -1,5 +1,4 @@
 import React from 'react'
-// import axios from 'axios'
 
 import { Link } from 'react-router-dom'
 import api from '../util/api';
@@ -22,8 +21,6 @@ class DealForm extends React.Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
-
-
     addDealToServer = (e) => {
         let deal = {
             deal: {
@@ -34,6 +31,7 @@ class DealForm extends React.Component {
             }
         }
         e.preventDefault()
+        var that = this;
         return fetch('http://localhost:3000/deals', {
             method: 'POST',
             headers: {
@@ -42,21 +40,16 @@ class DealForm extends React.Component {
             },
             body: JSON.stringify(deal)
         }).then(resp => resp.json())
-
             .then((json) => {
-                console.log(json)
-                this.props.getRestaurantsAndDeals()
-                this.props.history.push("home")
+                debugger;
+                that.props.history.push("home")
             })   // submit post then redirect to "/home"
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-
-        this.addDealToServer()
+        this.addDealToServer(e)
     }
-
-
 
     render() {
         return (
@@ -67,7 +60,7 @@ class DealForm extends React.Component {
 
                         <span className="deal">
                             <select name="restaurant_id" onChange={this.handleChange} >
-                                {this.props.restaurants.map(rest => <option value={rest.id}>{rest.name}</option>)}
+                                {this.props.restaurants.map(rest => <option key={rest.id} value={rest.id}>{rest.name}</option>)}
                             </select>
                         </span>
                         <input
@@ -87,11 +80,9 @@ class DealForm extends React.Component {
                             label='description' />
                         <input className="submitButton" type="submit" />
                         <button onClick={this.handleLogOut}>Log out</button>
-
                         <div className="deal">
                         </div>
                     </form >
-
                 </div >
             </ >
         )

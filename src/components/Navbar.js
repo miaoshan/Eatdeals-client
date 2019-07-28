@@ -19,51 +19,69 @@ function NavBar(props) {
                 </h3>
             </Link>
 
+
+
+
             <ul className="nav-links">
                 {/* <Link style={navStyle} to="/login">
                     <li className="navButtons">login</li>
                 </Link> */}
+
                 <Link style={navStyle} to="/home">
                     <li className="navButtons">
-                        <img
-                            className="navImage"
-                            // src="https://media-public.canva.com/MADQ0damsO8/1/thumbnail_large.png"
-                            src="https://media-public.canva.com/MADDqtu_8bU/1/thumbnail_large.png"
-                            alt="Home page"
-                        />
+                        <div className="tooltip-on-hover">
+                            <img
+                                className="navImage"
+                                // src="https://media-public.canva.com/MADQ0damsO8/1/thumbnail_large.png"
+                                src="https://media-public.canva.com/MADDqtu_8bU/1/thumbnail_large.png"
+                                alt="Home page"
+                            />
+                        </div>
+                        <div className="tooltip">Home</div>
+
                     </li>
                 </Link>
 
+
                 {props.loggedin ? < Link style={navStyle} to="/postadeal">
                     <li className="navButtons">
-                        <img
-                            className="navImage"
-                            // src="https://media-public.canva.com/MABIMab2NkQ/1/thumbnail.png"
-                            // src="https://media-public.canva.com/MAC2kikNtvY/1/thumbnail_large.png"
-                            src="https://media-public.canva.com/MAC2kj4UysQ/1/thumbnail_large.png"
-                            alt="postdealpage"
-                        />
+                        <div className="tooltip-on-hover">
+                            <img
+                                className="navImage"
+                                // src="https://media-public.canva.com/MABIMab2NkQ/1/thumbnail.png"
+                                // src="https://media-public.canva.com/MAC2kikNtvY/1/thumbnail_large.png"
+                                src="https://media-public.canva.com/MAC2kj4UysQ/1/thumbnail_large.png"
+                                alt="postdealpage"
+                            />
+                        </div>
+                        <div className="tooltip">Post New Deal</div>
                     </li>
                 </Link> : ""}
 
                 <Link style={navStyle} to="/deals">
                     <li>
-                        <img
-                            className="navImage"
-                            src="https://media-public.canva.com/MABG-ySdtoA/1/thumbnail.png"
-                            alt="alldealspage"
-                        />
+                        <div className="tooltip-on-hover">
+                            <img
+                                className="navImage"
+                                src="https://media-public.canva.com/MABG-ySdtoA/1/thumbnail.png"
+                                alt="alldealspage"
+                            />
+                        </div>
+                        <div className="tooltip">Deals</div>
                     </li>
                 </Link>
 
 
                 {props.loggedin ? < Link style={navStyle} to="/mydeal">
                     <li className="navButtons">
-                        <img
-                            className="navImage"
-                            src="https://media-public.canva.com/MAC2kmCWEM4/2/thumbnail_large.png"
-                            alt="mydealpage"
-                        />
+                        <div className="tooltip-on-hover">
+                            <img
+                                className="navImage"
+                                src="https://media-public.canva.com/MAC2kmCWEM4/2/thumbnail_large.png"
+                                alt="mydealpage"
+                            />
+                        </div>
+                        <div className="tooltip">My Deals</div>
                     </li>
                 </Link> : ""}
 
@@ -73,11 +91,14 @@ function NavBar(props) {
 
                 <Link style={navStyle} to="/login">
                     <li>
-                        <img
-                            className="navImage"
-                            src="https://media-public.canva.com/MABWubh33d0/1/thumbnail.png"
-                            alt="Login Key"
-                        />
+                        <div className="tooltip-on-hover">
+                            <img
+                                className="navImage"
+                                src="https://media-public.canva.com/MABWubh33d0/1/thumbnail.png"
+                                alt="Login Key"
+                            />
+                        </div>
+                        <div className="tooltip">Signup/Login</div>
                     </li>
                 </Link>
             </ul>

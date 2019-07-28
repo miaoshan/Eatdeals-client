@@ -19,6 +19,7 @@ const RestaurantSpecCard = (props) => {
                     <Card.Description>Deal: {props.restaurant.description}</Card.Description><br />
                     <Card.Description>Review: {props.restaurant.review}</Card.Description><br />
                     <Card.Description>Cost Per Person: £{props.restaurant.average_cost_per_person}</Card.Description>
+
                 </Card.Header>
 
                 <Map
@@ -28,6 +29,9 @@ const RestaurantSpecCard = (props) => {
                     initialCenter={{ lat: 51.509865, lng: -0.118092 }}
                 ></Map>
             </Card.Content>
+            <div>
+                <Link to={"https://www.google.com/maps?f=d&daddr=Steeple+Aston+Bicester+Oxfordshire+OX25+5QQ+GB"}>Direction</Link>
+            </div>
         </Card>
 
     )
