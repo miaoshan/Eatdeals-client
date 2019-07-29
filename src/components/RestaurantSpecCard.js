@@ -19,7 +19,7 @@ const RestaurantSpecCard = (props) => {
                     <Card.Description>{props.restaurant.location}</Card.Description><br />
                     <Card.Description>Deal: {props.restaurant.description}
                         <ul>
-                            {props.restaurant.deals.map(deal => <li key={deal.id} value={deal.description}></li>)}
+                            {props.restaurant.deals.map(deal => <li key={deal.id}>{deal.description}</li>)}
 
                         </ul>
                     </Card.Description><br />

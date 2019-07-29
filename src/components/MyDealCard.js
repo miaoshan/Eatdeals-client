@@ -24,7 +24,6 @@ class MyDealCard extends React.Component {
         })
             .then(respo => respo.json())
             .then((json) => {
-                debugger
                 that.props.history.push("mydeal")
             })   // submit post then redirect to "/mydeal" page
     };
