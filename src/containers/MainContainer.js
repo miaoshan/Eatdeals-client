@@ -90,7 +90,7 @@ class MainContainer extends Component {
                 ></SearchBar>
                 <RestaurantContainer restaurants={this.finalRestaurantsList()} searchTerm={this.state.searchTerm}
                     deselectRestaurant={this.deselectRestaurant} selectRestaurant={this.selectRestaurant} />
-                <DealContainter />
+                {/* <DealContainter /> */}
 
 
             </div >

@@ -26,7 +26,7 @@ class RestaurantDealSpec extends React.Component {
             return (
                 <div>
                     <div className="" >
-                        <RestaurantSpecCard restaurant={restaurant} />
+                        <RestaurantSpecCard restaurant={restaurant} id={this.props.id} username={this.props.username} restaurants={this.props.restaurants} />
                     </div>
                 </div >
             );

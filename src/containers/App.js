@@ -6,14 +6,14 @@ import Header from "../pages/Header";
 import api from "../util/api";
 import Login from "../components/Login";
 import "../App.css";
-import MainContainer from "./MainContainer";
+import RestaurantContainer from "./RestaurantContainer";
 import _ from 'lodash';
 import RestaurantSpec from '../components/RestaurantSpec';
 import DealSpec from '../components/DealSpec';
 import MyDeal from '../components/MyDeal';
 import EditMyDeal from '../components/EditMyDeal';
+import MainContainer from "./MainContainer";
 import DealContainer from "./DealContainer";
-import RestaurantContainer from "./RestaurantContainer";
 
 class App extends React.Component {
   state = {
@@ -97,8 +97,8 @@ class App extends React.Component {
       <div className="App">
         <Navbar loggedin={this.state.logged_in} />
         <Switch>
-          <Route path="/home" render={() => <RestaurantContainer restaurants={this.state.restaurants} />} />
-          <Route path="/restaurants/:id" render={(routerProps) => <RestaurantSpec {...routerProps} restaurants={this.state.restaurants} />} />
+          <Route path="/home" render={() => <MainContainer restaurants={this.state.restaurants} />} />
+          <Route path="/restaurants/:id" render={(routerProps) => <RestaurantSpec {...routerProps} restaurants={this.state.restaurants} id={this.state.id} username={this.state.username} />} />
           <Route path="/deals/:id/edit" component={(routerProps) => <EditMyDeal {...routerProps} user_id={this.state.id} username={this.state.username} />} />
           <Route path="/deals/:id" component={(routerProps) => <DealSpec {...routerProps} />} />
           <Route path="/deals" component={(routerProps) => <DealContainer {...routerProps} user_id={this.state.id} username={this.state.username} />} />

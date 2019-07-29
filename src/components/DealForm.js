@@ -41,7 +41,7 @@ class DealForm extends React.Component {
         }).then(resp => resp.json())
             .then((json) => {
 
-                that.props.history.push("deals")
+                that.props.history.push("mydeal")
             })   // submit post then redirect to "/home"
     }
 
@@ -77,7 +77,7 @@ class DealForm extends React.Component {
                             type="text"
                             placeholder="description"
                             label='description' />
-                        <input className="submitButton" type="submit" />
+                        <input className="submitButton" type="submit" /><br></br>
                         <button onClick={this.handleLogOut}>Log out</button>
                         <div className="deal">
                         </div>

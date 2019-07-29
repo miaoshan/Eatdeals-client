@@ -37,22 +37,31 @@ class MyDealCard extends React.Component {
                     <Card.Content>
                         <Card.Header>
                             {console.log("?")}
+                            <Card.Description>Deal: {this.props.deal.description}</Card.Description><br />
+
                             <Card.Description>{this.props.restaurant.name}</Card.Description><br />
-                            <Card.Description>Location:{this.props.restaurant.location}</Card.Description><br />
-                            <Card.Description>Deal: {this.props.restaurant.description}</Card.Description><br />
+                            <Card.Description>Location: {this.props.restaurant.location}</Card.Description><br />
+                            <Card.Description>{this.props.restaurant.description}</Card.Description><br />
                             <Card.Description>Review: {this.props.restaurant.review}</Card.Description><br />
                             <Card.Description>Cost Per Person: £{this.props.restaurant.average_cost_per_person}</Card.Description>
                             <Link to={`/deals/${this.props.deal.id}/edit`} ><br />Edit</Link><br />
                             <button onClick={() => this.deleteMyDeal(this.props.deal.id)}>Delete</button>
+
                         </Card.Header>
                     </Card.Content>
                 </Card >
-                {/* <Map
-                google={google}
-                zoom={18}
-                style={mapStyles}
-                initialCenter={{ lat: 51.509865, lng: -0.118092 }}
-            ></Map> */}
+
+                {/* < form onSubmit={this.addReviewToServer} className="searchBar" >review this deal:
+                    <input
+                        name="description"
+                        className="inputBox"
+                        onChange={this.handleChange}
+                        type="text"
+                        placeholder="add review"
+                        label='description' />
+                    <input className="submitButton" type="submit" /><br></br>
+
+                </form> */}
 
             </div>
 

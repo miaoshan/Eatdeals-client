@@ -63,6 +63,10 @@ nav {
   height: 16vh;
   margin: 0px;
 }
+
+.tooltip{
+  width: 100px;
+}
 /* -------------NAVBAR------------- */
 
 /* -------------CONTAINER FOR ALL BOOKS------------- */
@@ -222,14 +226,18 @@ input:hover {
   flex-wrap: wrap;
   justify-content: space-around;
 }
+/* -------------Deal Form------------- */
 
 .searchBar{
-  display: flex;
+  display: center;
   flex-direction: column; 
-  width: 200px;
+  width: 500px;
+  margin:auto;
   justify-content: center;
-  text-align: center
+  text-align: center;
+  
 }
+/* -------------Deal Form------------- */
 
 
 .dealContainer{
@@ -248,8 +256,9 @@ input:hover {
 
 .dealform{
 
-  background-image: url('https://static1.squarespace.com/static/58dd43f8e58c626c4d1e1099/59112305197aea6a0b7e83ba/593b0caad482e942ba110565/1497079470569/Empath+high_fibre-food.jpg?format=1500w');
-  height: 100vh;
+  /* background-image: url(''); */
+  /* height: 100vh; */
+  position: center
 }
 
 .mydealcard
@@ -264,3 +273,51 @@ display: flex;
 
 .tooltip { display: none; }
 .tooltip-on-hover:hover + .tooltip { display: block; }
+
+
+/* -------------Cards ------------- */
+
+.restaurantSpecContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: space-around;
+  /* width: 100% */
+}
+
+.restaurantSpecContainer div {
+  /* display: inline-block; */
+  /* width: 200px; */
+}
+
+.restaurantspeccard{
+  min-width: 200px;
+}
+
+.dealinput{
+  /* min-width: 300px; */
+  /* display: center;
+  justify-content: center;
+  text-align: center; */
+}
+
+
+/* .restdetail{
+  display: center;
+  justify-content: center;
+  text-align: center;
+} */
+
+.mapContainer {
+  width: 200px;
+  /* min-width: 50vw; */
+  /* display: center;
+  justify-content: center;
+  text-align: center; */
+
+}
+
+.map {
+  /* width: 200px; */
+}

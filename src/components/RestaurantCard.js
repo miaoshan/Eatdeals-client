@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import RestaurantContainer from '../containers/RestaurantContainer';
 
 const RestaurantCard = (props) => (
     <Card>
@@ -12,6 +13,11 @@ const RestaurantCard = (props) => (
                     View Deal</Link>
             </Card.Header>
 
+            {
+                props.restaurant.deals.length > 0 ?
+                    props.restaurant.deals[props.restaurant.deals.length - 1].description
+                    : ""
+            }
 
         </Card.Content>
     </Card>

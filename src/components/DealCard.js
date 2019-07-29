@@ -11,6 +11,7 @@ const DealCard = (props) => (
                     {props.deal.description}<br />
                     View Deal
                 </Link>
+                {/* <Card.Description>{props.deal.restaurant.name}</Card.Description><br /> */}
             </Card.Header>
         </Card.Content>
     </Card>
