@@ -59,6 +59,8 @@ class DealForm extends React.Component {
 
                         <span className="deal">
                             <select name="restaurant_id" onChange={this.handleChange} >
+                                <option value="">--Please choose a restaurant--</option>
+
                                 {this.props.restaurants.map(rest => <option key={rest.id} value={rest.id}>{rest.name}</option>)}
                             </select>
                         </span>

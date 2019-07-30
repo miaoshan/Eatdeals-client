@@ -19,9 +19,6 @@ function NavBar(props) {
                 </h3>
             </Link>
             <ul className="nav-links">
-                {/* <Link style={navStyle} to="/login">
-                    <li className="navButtons">login</li>
-                </Link> */}
 
                 <Link style={navStyle} to="/home">
                     <li className="navButtons">

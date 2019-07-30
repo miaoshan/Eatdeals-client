@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image, Container } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import DealForm from './DealForm';
@@ -11,8 +11,9 @@ const mapStyles = {
 
 const RestaurantSpecCard = (props) => {
     return (
-        <div className="restaurantSpecContainer">
-            <div className="restaurantSpecCard">
+        <Container>
+            <Card.Group itemsPerRow={2}>
+
                 <Card className="restDetails">
                     <Image src={props.restaurant.image} wrapped ui={false} />
                     <Card.Content>
@@ -31,7 +32,7 @@ const RestaurantSpecCard = (props) => {
                         </Card.Header>
                     </Card.Content>
                 </Card>
-            </div>
+            </Card.Group>
             <div className="dealinput">
                 <DealForm id={props.id} username={props.username} restaurants={props.restaurants} />
             </div>
@@ -46,7 +47,7 @@ const RestaurantSpecCard = (props) => {
                 >{<Marker key={props.restaurant.id} position={{ lat: props.restaurant.latitude, lng: props.restaurant.longitude }} />}
                 </Map>
             </div>
-        </div>
+        </Container>
     )
 }
 

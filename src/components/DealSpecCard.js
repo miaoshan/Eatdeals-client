@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 const mapStyles = {
-    width: '260%',
-    height: '80%',
+    width: '800',
+    height: '800',
 };
 
 const DealSpecCard = (props) => {
@@ -35,6 +35,9 @@ const DealSpecCard = (props) => {
                 style={mapStyles}
                 initialCenter={{ lat: 51.509865, lng: -0.118092 }}
             ></Map>
+
+            {/* <Link to="https://www.google.com/maps" >Direction</Link> */}
+
         </div>
     )
 }

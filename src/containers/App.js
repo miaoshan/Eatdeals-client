@@ -23,7 +23,7 @@ class App extends React.Component {
     password: "",
     sortBy: "All",
     restaurants: [],
-    deals: {}
+    deals: []
   };
 
   componentDidMount() {
@@ -51,6 +51,22 @@ class App extends React.Component {
       .then(deals => {
         this.setState({ deals: deals })
       })
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log(prevProps, this.props)
+    if (prevProps.location.pathname !== this.props.location.pathname && this.props.location.pathname === '/home') {
+      this.fetchRestaurants()
+        .then(restaurants => {
+          this.setState({ restaurants: restaurants })
+
+        })
+
+      this.fetchDeals()
+        .then(deals => {
+          this.setState({ deals: deals })
+        })
+    }
   }
 
 
@@ -90,6 +106,7 @@ class App extends React.Component {
     return fetch("http://localhost:3000/deals")
       .then(resp => resp.json())
   }
+
 
 
   render() {
