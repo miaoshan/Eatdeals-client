@@ -4,7 +4,6 @@ import api from "../util/api";
 import { Link } from "react-router-dom";
 
 
-
 class Login extends React.Component {
 
     state = {
@@ -22,10 +21,10 @@ class Login extends React.Component {
                 this.setState({ username: "", password: "" });
             } else {
                 localStorage.setItem("token", data.jwt);
-                this.setState({ logged_in: true });
-                this.props.saveUser(data)
+                this.setState({ logged_in: true }, () => this.props.saveUser(data));
+
                 // debugger
-                this.props.history.push('/postadeal')
+                this.props.history.push('/home')
             }
         });
     };
@@ -43,7 +42,7 @@ class Login extends React.Component {
                 localStorage.setItem("token", data.jwt);
                 this.setState({ logged_in: true, username: data.username });
                 this.props.saveUser(data)
-                this.props.history.push('/postadeal')
+                this.props.history.push('/home')
             }
         });
     };
@@ -54,27 +53,11 @@ class Login extends React.Component {
         });
     };
 
-    handleLogOut = () => {
-        console.log("mmmm")
-        localStorage.clear("token");
-        this.setState({
-            logged_in: false,
-            username: "",
-            password: ""
 
-        });
-    };
 
     render() {
         return (
             <div className="nav">
-                {this.state.logged_in &&
-                    <div>
-                        <h2> {`Welcome to Eatdeals,${this.state.username}!`}</h2>
-                        <button onClick={this.handleLogOut}>Log out</button>
-                        <p className="nav-links"><Link to="/postadeal"> Post an awesome Deal!</Link></p>
-
-                    </div>}
 
                 <form>
                     <label htmlFor="username">Username:</label>

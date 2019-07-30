@@ -5,6 +5,7 @@ import DealForm from "../components/DealForm";
 import Header from "../pages/Header";
 import api from "../util/api";
 import Login from "../components/Login";
+import Logout from "../components/Login";
 import "../App.css";
 import RestaurantContainer from "./RestaurantContainer";
 import _ from 'lodash';
@@ -14,6 +15,7 @@ import MyDeal from '../components/MyDeal';
 import EditMyDeal from '../components/EditMyDeal';
 import MainContainer from "./MainContainer";
 import DealContainer from "./DealContainer";
+import { Container } from 'semantic-ui-react';
 
 class App extends React.Component {
   state = {
@@ -27,6 +29,8 @@ class App extends React.Component {
   };
 
   componentDidMount() {
+    console.log('in componentDidMount in APP')
+
     const token = localStorage.getItem("token");
     if (token) {
 
@@ -54,6 +58,7 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    console.log('in componentDidUpdate in APP')
     console.log(prevProps, this.props)
     if (prevProps.location.pathname !== this.props.location.pathname && this.props.location.pathname === '/home') {
       this.fetchRestaurants()
@@ -85,15 +90,17 @@ class App extends React.Component {
     });
   };
 
-
-  handleLogOut = () => {
-    localStorage.clear("token");
+  handleLogOut = (e) => {
+    e.preventDefault()
+    console.log("mmmm")
+    localStorage.removeItem("token");
     this.setState({
       logged_in: false,
       username: "",
-      password: "",
+      id: ""
 
     });
+    this.props.history.push("/login")
   };
 
 
@@ -112,7 +119,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Navbar loggedin={this.state.logged_in} />
+        <Navbar miao={this.handleLogOut} loggedin={this.state.logged_in} />
         <Switch>
           <Route path="/home" render={() => <MainContainer restaurants={this.state.restaurants} />} />
           <Route path="/restaurants/:id" render={(routerProps) => <RestaurantSpec {...routerProps} restaurants={this.state.restaurants} id={this.state.id} username={this.state.username} />} />
@@ -122,7 +129,7 @@ class App extends React.Component {
           <Route path="/postadeal" render={(routerProps) => <DealForm a id={this.state.id} username={this.state.username} restaurants={this.state.restaurants}{...routerProps} />} />
           <Route path="/login" component={(routerProps) => <Login {...routerProps} saveUser={this.saveUser.bind(this)} />} />
           <Route path="/mydeal" component={(routerProps) => <MyDeal {...routerProps} deals={this.state.deals} user_id={this.state.id} username={this.state.username} />} />
-          <Route component={() => <h1>Page not found.</h1>} />
+          <Route path="/logout" component={(routerProps) => <Logout {...routerProps} saveUser={this.saveUser.bind(this)} />} />} />
         </Switch>
       </div>
 

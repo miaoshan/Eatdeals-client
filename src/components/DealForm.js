@@ -80,7 +80,6 @@ class DealForm extends React.Component {
                             placeholder="description"
                             label='description' />
                         <input className="submitButton" type="submit" /><br></br>
-                        <button onClick={this.handleLogOut}>Log out</button>
                         <div className="deal">
                         </div>
                     </form >
