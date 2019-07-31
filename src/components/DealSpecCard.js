@@ -1,7 +1,7 @@
 import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image, Grid } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
 const mapStyles = {
     width: '800',
@@ -14,31 +14,35 @@ const DealSpecCard = (props) => {
     const { image, restaurant, description } = deal
     const { name, location, review, average_cost_per_person } = restaurant
 
+    const mapStyles = {
+        width: '90%',
+        height: '90%',
+    };
     return (
-        <div className="DealSpecCard" >
-            <Card>
-                <Image src={image} wrapped ui={false} />
-                <Card.Content>
-                    <Card.Header>
-                        {console.log("?")}
-                        <Card.Description>{name}</Card.Description><br />
-                        <Card.Description>{location}</Card.Description><br />
-                        <Card.Description>Deal: {description}</Card.Description><br />
-                        <Card.Description>Review: {review}</Card.Description><br />
-                        <Card.Description>Cost Per Person: £{average_cost_per_person}</Card.Description>
-                    </Card.Header>
-                </Card.Content>
-            </Card>
-            <Map
-                google={google}
-                zoom={18}
-                style={mapStyles}
-                initialCenter={{ lat: 51.509865, lng: -0.118092 }}
-            ></Map>
+        <Grid columns={3} divided>
+            <Grid.Row>
 
-            {/* <Link to="https://www.google.com/maps" >Direction</Link> */}
 
-        </div>
+                <Grid.Column>
+                    {console.log("?")}
+                    <Card.Description>{name}</Card.Description><br />
+                    <Card.Description>{location}</Card.Description><br />
+                    <Card.Description>Deal: {description}</Card.Description><br />
+                    <Card.Description>Review: {review}</Card.Description><br />
+                    <Card.Description>Cost Per Person: £{average_cost_per_person}</Card.Description>
+                </Grid.Column>
+
+                <Grid.Column>
+                    <Map
+                        google={google}
+                        zoom={17}
+                        style={mapStyles}
+                        initialCenter={{ lat: 51.509865, lng: -0.118092 }}>
+                    </Map>
+                </Grid.Column>
+            </Grid.Row>
+        </Grid >
+
     )
 }
 

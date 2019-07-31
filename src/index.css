@@ -3,17 +3,23 @@
   text-align: center;
 }
 
-nav {
+body {
+  background-image: url('');
+  background-color: rgb(238, 238, 240);
+};
+
+
+.navbar {
   display: flex;
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  /* background: rgb(241, 242, 243); */
-  color: rgb(172, 126, 75);
+  background: rgb(241, 242, 243);
+  color: rgb(202, 121, 66);
 }
 
 .nav-links{
-  width: 50%;
+  width: 80%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -30,8 +36,8 @@ nav {
 }
 .navButtons:hover,
 .navImage:hover {
-  background-color: rgba(235, 239, 240, 0.651);
-  border-radius: 8px;
+  background-color: rgba(212, 198, 198, 0.534);
+  border-radius: 6px;
 }
 .homeImage {
   height: 16vh;
@@ -52,4 +58,40 @@ nav {
   flex-direction: row; 
   flex-wrap: wrap;
   justify-content: space-around;
+ 
 }
+
+.dealContainer{
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap;
+  justify-content: spcace-evenly;
+  
+  
+}
+
+
+
+
+/* ---------------------------------------------------Containers---------------------------------------------------- */
+
+
+
+
+
+
+/* ---------------------------------------------------Containers---------------------------------------------------- */
+
+
+.mydealcard{
+  
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+
+
+/* ---------------------------------------------------Cards---------------------------------------------------- */
+

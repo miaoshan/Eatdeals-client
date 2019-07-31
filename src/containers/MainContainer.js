@@ -49,8 +49,8 @@ class MainContainer extends Component {
 
     // sets the value of sort By in state 
 
-    setSortBy = (event) => {
-        this.setState({ sortBy: event.target.value })
+    setSortBy = (event, props) => {
+        this.setState({ sortBy: props.value })
     }
 
     // 

@@ -1,42 +1,61 @@
 import React, { Component } from 'react';
-import Button from "@material-ui/core/Button";
+import {
+    Button,
+    Form,
+    Grid,
+    Header,
+    Message,
+    Segment
+} from 'semantic-ui-react';
+import { Dropdown } from 'semantic-ui-react';
+
+const dropDownOptions = [
+    { key: 'Alphabetically', value: 'Alphabetically', text: 'Alphabetically' },
+    { key: 'Price', value: 'Price', text: 'Average cost per person High-Low' },
+    { key: 'Review', value: 'Review', text: 'Review High-Low' },
+]
 
 const SearchBar = (props) => {
 
     return (
-
         <div>
-            <div className="searching">
-                <span className="searching">
-                    <form onSubmit={props.selectRestaurant} className="searchBar">
+            <Grid centered columns={2}>
+                <Grid.Column>
+                    <Header as="h2" textAlign="center"></Header>
+                    <Segment>
+                        <Form size="large">
+                            <Form.Input
+                                onSubmit={props.selectRestaurant} className="searchBar"
+                                className="searchBox"
+                                onChange={props.updateSearchTerm}
+                                type="text"
+                                placeholder="Search" />
+                        </Form>
+                    </Segment>
 
-                        {/* <form> */}
-                        <input
-                            className="searchBox"
-                            onChange={props.updateSearchTerm}
-                            type="text"
-                            placeholder="Search"
-                        />
-                        {/* <input className="searchButton" type="submit" /> */}
-                    </form>
+                    {/* 
+                    <div>
+                        <p className="orangeFont">Sort By:</p>
+                        <select onChange={props.setSortBy} className="searchButton">
+                            <option value="Alphabetically">Alphabetically</option>
+                            <option value="Price">Average cost per person High-Low</option>
+                            <option value="Review">Review High-Low</option>
+                        </select>
+                    </div> */}
 
-                </span>
-            </div>
+                    <Dropdown
+                        placeholder='Sort By'
+                        fluid
 
+                        selection onChange={props.setSortBy} className="searchButton"
+                        options={dropDownOptions}
 
-            <div>
-                <span className="searching">
-                    <p className="orangeFont">Sort By:</p>
-                    <select onChange={props.setSortBy} className="searchButton">
-                        {/* <option value="All">All</option> */}
-                        <option value="Alphabetically">Alphabetically</option>
-                        <option value="Price">Average cost per person High-Low</option>
-                        <option value="Review">Review High-Low</option>
+                    />
 
-                    </select>
-                </span>
-            </div>
-        </div>
+                </Grid.Column >
+            </Grid >
+
+        </div >
     )
 
 

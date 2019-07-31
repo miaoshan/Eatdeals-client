@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react';
+import { Card, Icon, Image, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 
@@ -30,40 +30,44 @@ class MyDealCard extends React.Component {
 
     render() {
         return (
-            <div className="mydealcard" >
-                < Card >
-                    <Link to={`/deals/${this.props.deal.id}`} ></Link>
-                    <Image src={this.props.deal.image} wrapped ui={false} />
-                    <Card.Content>
+            <Grid centered columns={2}>
+                <Grid.Row>
+                    <Grid.Column>
+                        <Link to={`/deals/${this.props.deal.id}`} ></Link>
+                        <Image src={this.props.restaurant.image} wrapped ui={false} />
+                    </Grid.Column>
+                    <Grid.Column>
                         <Card.Header>
                             {console.log("?")}
-                            <Card.Description>Deal: {this.props.deal.description}</Card.Description><br />
-
                             <Card.Description>{this.props.restaurant.name}</Card.Description><br />
                             <Card.Description>Location: {this.props.restaurant.location}</Card.Description><br />
                             <Card.Description>{this.props.restaurant.description}</Card.Description><br />
                             <Card.Description>Review: {this.props.restaurant.review}</Card.Description><br />
-                            <Card.Description>Cost Per Person: £{this.props.restaurant.average_cost_per_person}</Card.Description>
+                            <Card.Description>Cost Per Person: £{this.props.restaurant.average_cost_per_person}</Card.Description><br />
+
+                            <Card.Description>Deals:  {this.props.deal.description}</Card.Description><br />
                             <Link to={`/deals/${this.props.deal.id}/edit`} ><br />Edit</Link><br />
                             <button onClick={() => this.deleteMyDeal(this.props.deal.id)}>Delete</button>
 
                         </Card.Header>
-                    </Card.Content>
-                </Card >
 
-                {/* < form onSubmit={this.addReviewToServer} className="searchBar" >review this deal:
-                    <input
-                        name="description"
-                        className="inputBox"
-                        onChange={this.handleChange}
-                        type="text"
-                        placeholder="add review"
-                        label='description' />
-                    <input className="submitButton" type="submit" /><br></br>
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid >
 
-                </form> */}
+            /* < form onSubmit={this.addReviewToServer} className="searchBar" >review this deal:
+                <input
+                    name="description"
+                    className="inputBox"
+                    onChange={this.handleChange}
+                    type="text"
+                    placeholder="add review"
+                    label='description' />
+                <input className="submitButton" type="submit" /><br></br>
 
-            </div>
+            </form> */
+
+
 
         )
     }

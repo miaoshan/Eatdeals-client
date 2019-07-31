@@ -33,16 +33,16 @@ class App extends React.Component {
 
     const token = localStorage.getItem("token");
     if (token) {
-
+      api.getCurrentUser(token).then(user => {
+        if (user.error) return;
+        console.log("!!!");
+        this.setState(
+          { logged_in: true, username: user.username, id: user.id }
+        );
+        console.info(this.state);
+      });
     }
 
-    api.getCurrentUser(token).then(user => {
-      console.log("!!!");
-      this.setState(
-        { logged_in: true, username: user.username, id: user.id }
-      );
-      console.info(this.state);
-    });
 
 
     this.fetchRestaurants()
@@ -74,12 +74,12 @@ class App extends React.Component {
     }
   }
 
-
   saveUser(user) {
     console.log(user)
     this.setState({
       id: user.id,
-      username: user.username
+      username: user.username,
+      logged_in: true
     })
   };
 
@@ -114,7 +114,9 @@ class App extends React.Component {
       .then(resp => resp.json())
   }
 
-
+  setLoginToTrue = () => {
+    this.setState({ logged_in: true })
+  }
 
   render() {
     return (
@@ -125,9 +127,9 @@ class App extends React.Component {
           <Route path="/restaurants/:id" render={(routerProps) => <RestaurantSpec {...routerProps} restaurants={this.state.restaurants} id={this.state.id} username={this.state.username} />} />
           <Route path="/deals/:id/edit" component={(routerProps) => <EditMyDeal {...routerProps} user_id={this.state.id} username={this.state.username} />} />
           <Route path="/deals/:id" component={(routerProps) => <DealSpec {...routerProps} />} />
-          <Route path="/deals" component={(routerProps) => <DealContainer {...routerProps} user_id={this.state.id} username={this.state.username} />} />
-          <Route path="/postadeal" render={(routerProps) => <DealForm a id={this.state.id} username={this.state.username} restaurants={this.state.restaurants}{...routerProps} />} />
-          <Route path="/login" component={(routerProps) => <Login {...routerProps} saveUser={this.saveUser.bind(this)} />} />
+          <Route path="/deals" component={(routerProps) => <DealContainer {...routerProps} user_id={this.state.id} username={this.state.username} restaurant={this.state.restaurant} />} />
+          {/* <Route path="/postadeal" render={(routerProps) => <DealForm {...routerProps} id={this.state.id} username={this.state.username} restaurants={this.state.restaurants} />} /> */}
+          <Route path="/login" component={(routerProps) => <Login {...routerProps} saveUser={this.saveUser.bind(this)} setLoginToTrue={this.setLoginToTrue} />} />
           <Route path="/mydeal" component={(routerProps) => <MyDeal {...routerProps} deals={this.state.deals} user_id={this.state.id} username={this.state.username} />} />
           <Route path="/logout" component={(routerProps) => <Logout {...routerProps} saveUser={this.saveUser.bind(this)} />} />} />
         </Switch>

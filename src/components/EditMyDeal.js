@@ -1,4 +1,12 @@
 import React from 'react';
+import {
+    Button,
+    Form,
+    Grid,
+    Header,
+    Message,
+    Segment,
+} from 'semantic-ui-react';
 
 
 class EditMyDeal extends React.Component {
@@ -35,7 +43,7 @@ class EditMyDeal extends React.Component {
             .then(resp => resp.json())
             .then((json) => {
 
-                this.props.history.push(`/deals/${id}`)
+                this.props.history.push(`/mydeal`)
             })
     }
 
@@ -47,32 +55,30 @@ class EditMyDeal extends React.Component {
     render() {
         const { restaurant } = this.state;
         return (
-            <>
-                <div className="editMyDealForm">
 
-                    < form onSubmit={this.handleSubmit} className="searchBar" >
+            <Grid centered columns={2} calssName="editDealForm">
+                <Grid.Column>
+                    <Header as="h2" textAlign="center">{`Hi ${this.props.username}, edit your deal!`}</Header>
+                    <Segment>
+                        <Form size="large" className="editdealform">
 
-                        <input
-                            name="image" onChange={this.handleChange}
-                            className="inputBox"
-                            onChange={this.handleChange}
-                            type="text"
-                            placeholder="image"
-                            label='image' />
+                            < form onSubmit={this.handleSubmit} className="searchBar" >
 
-                        <input
-                            name="description"
-                            className="inputBox"
-                            onChange={this.handleChange}
-                            type="text"
-                            placeholder="description"
-                            label='description' />
-                        <input className="submitButton" type="submit" />
 
-                    </form >
+                                <input
+                                    name="description"
+                                    className="inputBox"
+                                    onChange={this.handleChange}
+                                    type="text"
+                                    placeholder="description"
+                                    label='description' />
+                                <input className="submitButton" type="submit" />
 
-                </div >
-            </ >
+                            </form >
+                        </Form>
+                    </Segment>
+                </Grid.Column>
+            </Grid>
 
         );
     }

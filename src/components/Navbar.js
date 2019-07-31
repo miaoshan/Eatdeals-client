@@ -31,10 +31,10 @@ function NavBar(props) {
                             />
                         </div>
                         <div className="tooltip">Home</div>
-
                     </li>
                 </Link>
-                {props.loggedin ? < Link style={navStyle} to="/postadeal">
+
+                {/* {props.loggedin ? < Link style={navStyle} to="/postadeal">
                     <li className="navButtons">
                         <div className="tooltip-on-hover">
                             <img
@@ -45,7 +45,7 @@ function NavBar(props) {
                         </div>
                         <div className="tooltip">Post New Deal</div>
                     </li>
-                </Link> : ""}
+                </Link> : ""} */}
 
                 <Link style={navStyle} to="/deals">
                     <li>
@@ -56,11 +56,9 @@ function NavBar(props) {
                                 alt="alldealspage"
                             />
                         </div>
-                        <div className="tooltip">Deals</div>
+                        <div className="tooltip">All Deals</div>
                     </li>
                 </Link>
-
-
                 {props.loggedin ? < Link style={navStyle} to="/mydeal">
                     <li className="navButtons">
                         <div className="tooltip-on-hover">
@@ -73,7 +71,8 @@ function NavBar(props) {
                         <div className="tooltip">My Deals</div>
                     </li>
                 </Link> : ""}
-                <Link style={navStyle} to="/login">
+
+                {!props.loggedin ? <Link style={navStyle} to="/login">
                     <li>
                         <div className="tooltip-on-hover">
                             <img
@@ -85,21 +84,21 @@ function NavBar(props) {
                         <div className="tooltip">Signup/Login</div>
                     </li>
                 </Link>
-
-                {/* <Link style={navStyle} to="/login"> */}
-                <li>
-                    <div className="tooltip-on-hover">
-                        <img
-                            className="navImage"
-                            src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.iconbunny.com%2Ficons%2Fmedia%2Fcatalog%2Fproduct%2F6%2F1%2F619.7-logout-icon-iconbunny.jpg&imgrefurl=https%3A%2F%2Fwww.iconbunny.com%2Ficons%2Fadmin-dashboard-logout-flat-round-corner-icon&docid=5liPziaNn6zRtM&tbnid=L_mRgvY4p23uLM%3A&vet=12ahUKEwiqiIbT19zjAhWyuXEKHdRfCMU4ZBAzKD8wP3oECAEQQQ..i&w=1024&h=1024&bih=622&biw=1280&q=icon%20logout&ved=2ahUKEwiqiIbT19zjAhWyuXEKHdRfCMU4ZBAzKD8wP3oECAEQQQ&iact=mrc&uact=8"
-                            alt="Login Key"
-                        />
-                    </div>
-                    {/* <div className="tooltip"> */}
-                    <button onClick={props.miao}>Logout </button>
-                    {/* </div> */}
-                </li>
-                {/* </Link> */}
+                    :
+                    <Link style={navStyle} to="/login">
+                        <li>
+                            <div className="tooltip-on-hover">
+                                <img
+                                    className="navImage"
+                                    src="https://www.trzcacak.rs/myfile/detail/37-379821_icon-free-download-png-and-vector-consider-logout.png"
+                                    alt="Logout"
+                                    onClick={props.miao}
+                                />
+                            </div>
+                            <div className="tooltip">Logout</div>
+                        </li>
+                    </Link>
+                }
             </ul>
         </nav >
     );

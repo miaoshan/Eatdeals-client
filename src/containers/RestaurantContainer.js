@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import RestaurantCard from '../components/RestaurantCard'
+import { Card, Grid } from "semantic-ui-react";
 
 
 class RestaurantContainer extends Component {
