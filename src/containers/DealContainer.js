@@ -8,6 +8,14 @@ class DealContainer extends Component {
         deals: []
     }
 
+
+    findRestaurant = (deal) => {
+        return this.props.restaurants.find(rest => {
+
+            return deal.restaurant_id === rest.id
+        })
+    }
+
     componentDidMount() {
         fetch("http://localhost:3000/deals")
             .then(resp => resp.json())
@@ -21,7 +29,7 @@ class DealContainer extends Component {
             <Card.Group className="dealContainer">
 
                 {
-                    this.state.deals.map((deal, index) => <DealCard key={index} deal={deal} restaurant={this.props.restaurant} />)
+                    this.state.deals.map((deal, index) => <DealCard key={index} deal={deal} restaurant={this.findRestaurant(deal)} />)
                 }
             </Card.Group>
 

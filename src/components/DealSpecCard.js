@@ -21,8 +21,6 @@ const DealSpecCard = (props) => {
     return (
         <Grid columns={3} divided>
             <Grid.Row>
-
-
                 <Grid.Column>
                     {console.log("?")}
                     <Card.Description>{name}</Card.Description><br />

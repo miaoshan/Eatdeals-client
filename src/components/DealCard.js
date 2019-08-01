@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 
 
 const DealCard = (props) => {
-
     return (
 
         < Grid container column={2} >
             <Grid.Row>
                 <Grid.Column>
-                    {/* <Image src={props.deal.restaurant.image} wrapped ui={false} /> */}
+                    {props.restaurant && <Image className="deal-image" src={props.restaurant.image} wrapped ui={false} />}
+
                     {props.deal.description}
                 </Grid.Column>
             </Grid.Row>

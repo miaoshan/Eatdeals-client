@@ -127,11 +127,11 @@ class App extends React.Component {
           <Route path="/restaurants/:id" render={(routerProps) => <RestaurantSpec {...routerProps} restaurants={this.state.restaurants} id={this.state.id} username={this.state.username} />} />
           <Route path="/deals/:id/edit" component={(routerProps) => <EditMyDeal {...routerProps} user_id={this.state.id} username={this.state.username} />} />
           <Route path="/deals/:id" component={(routerProps) => <DealSpec {...routerProps} />} />
-          <Route path="/deals" component={(routerProps) => <DealContainer {...routerProps} user_id={this.state.id} username={this.state.username} restaurant={this.state.restaurant} />} />
-          {/* <Route path="/postadeal" render={(routerProps) => <DealForm {...routerProps} id={this.state.id} username={this.state.username} restaurants={this.state.restaurants} />} /> */}
+          <Route path="/deals" component={(routerProps) => <DealContainer {...routerProps} user_id={this.state.id} username={this.state.username} restaurants={this.state.restaurants} />} />
           <Route path="/login" component={(routerProps) => <Login {...routerProps} saveUser={this.saveUser.bind(this)} setLoginToTrue={this.setLoginToTrue} />} />
           <Route path="/mydeal" component={(routerProps) => <MyDeal {...routerProps} deals={this.state.deals} user_id={this.state.id} username={this.state.username} />} />
           <Route path="/logout" component={(routerProps) => <Logout {...routerProps} saveUser={this.saveUser.bind(this)} />} />} />
+
         </Switch>
       </div>
 
