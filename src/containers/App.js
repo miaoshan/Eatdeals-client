@@ -28,6 +28,20 @@ class App extends React.Component {
     deals: []
   };
 
+  fetchRestaurantsAndSetState = () => {
+    return this.fetchRestaurants()
+      .then(restaurants => {
+        this.setState({ restaurants: restaurants })
+      })
+  }
+
+  fetchDealsAndSetState = () => {
+    return this.fetchDeals()
+      .then(deals => {
+        this.setState({ deals: deals })
+      })
+  }
+
   componentDidMount() {
     console.log('in componentDidMount in APP')
 
@@ -43,18 +57,8 @@ class App extends React.Component {
       });
     }
 
+    this.fetchRestaurantsAndSetState().then(this.fetchDealsAndSetState)
 
-
-    this.fetchRestaurants()
-      .then(restaurants => {
-        this.setState({ restaurants: restaurants })
-
-      })
-
-    this.fetchDeals()
-      .then(deals => {
-        this.setState({ deals: deals })
-      })
   }
 
   componentDidUpdate(prevProps) {
@@ -124,7 +128,7 @@ class App extends React.Component {
         <Navbar miao={this.handleLogOut} loggedin={this.state.logged_in} />
         <Switch>
           <Route path="/home" render={() => <MainContainer restaurants={this.state.restaurants} />} />
-          <Route path="/restaurants/:id" render={(routerProps) => <RestaurantSpec {...routerProps} restaurants={this.state.restaurants} id={this.state.id} username={this.state.username} />} />
+          <Route path="/restaurants/:id" render={(routerProps) => <RestaurantSpec {...routerProps} setDealsInState={this.fetchDealsAndSetState} restaurants={this.state.restaurants} id={this.state.id} username={this.state.username} />} />
           <Route path="/deals/:id/edit" component={(routerProps) => <EditMyDeal {...routerProps} user_id={this.state.id} username={this.state.username} />} />
           <Route path="/deals/:id" component={(routerProps) => <DealSpec {...routerProps} />} />
           <Route path="/deals" component={(routerProps) => <DealContainer {...routerProps} user_id={this.state.id} username={this.state.username} restaurants={this.state.restaurants} />} />

@@ -44,7 +44,8 @@ class DealForm extends React.Component {
             },
             body: JSON.stringify(deal)
         })
-        this.props.history.push("/home")
+        this.props.setDealsInState().then(() => this.props.history.push("/mydeal"))
+
         // submit post then redirect to "/home"
     }
 

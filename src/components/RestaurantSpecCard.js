@@ -18,7 +18,7 @@ const RestaurantSpecCard = (props) => {
 
                 <Grid.Column>
                     <Image src={props.restaurant.image} wrapped ui={false} />
-                    <DealForm id={props.id} restaurant={props.restaurant} username={props.username} restaurants={props.restaurants} history={props.history} />
+                    <DealForm id={props.id} setDealsInState={props.setDealsInState} restaurant={props.restaurant} username={props.username} restaurants={props.restaurants} history={props.history} />
                     <Card.Description> {props.restaurant.name}</Card.Description><br />
                     <Card.Description>{props.restaurant.location}</Card.Description><br />
                     <Card.Description>{props.restaurant.description}</Card.Description><br />
