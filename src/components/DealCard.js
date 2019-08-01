@@ -6,14 +6,11 @@ import { Link } from 'react-router-dom';
 
 const DealCard = (props) => {
     return (
-
-
-
         <Grid.Column>
             {props.restaurant && <Image className="deal-image" src={props.restaurant.image} wrapped ui={false} />}
-
-            {props.deal.description}
-        </Grid.Column>
+            Restaurant: {props.restaurant.name}<br></br>
+            Deal: {props.deal.description}
+        </Grid.Column >
 
 
     )
