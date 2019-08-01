@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DealCard from '../components/DealCard';
-import { Card } from "semantic-ui-react";
+import { Card, Grid } from "semantic-ui-react";
 
 class DealContainer extends Component {
 
@@ -26,12 +26,14 @@ class DealContainer extends Component {
     }
     render() {
         return (
-            <Card.Group className="dealContainer">
+            // <Card.Group className="dealContainer">
+            <Grid doubling columns={3}>
 
                 {
                     this.state.deals.map((deal, index) => <DealCard key={index} deal={deal} restaurant={this.findRestaurant(deal)} />)
                 }
-            </Card.Group>
+                {/* </Card.Group> */}
+            </Grid>
 
         );
     }
