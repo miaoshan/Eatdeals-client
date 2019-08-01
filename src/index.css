@@ -5,16 +5,15 @@
 
 body {
   background-image: url('');
-  background-color: rgb(238, 238, 240);
+  background-color: #eaeaff;
 };
-
 
 .navbar {
   display: flex;
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background: rgb(241, 242, 243);
+  background: rgb(153, 183, 212);
   color: rgb(202, 121, 66);
 }
 
@@ -24,6 +23,7 @@ body {
   justify-content: space-around;
   align-items: center;
   list-style: none;
+  padding-left: 500px;
 }
 
 .navButtons {
