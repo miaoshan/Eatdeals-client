@@ -7,13 +7,12 @@ class RestaurantContainer extends Component {
 
     render() {
         return (
-
-            <div className="restaurantContainer">
+            <Grid doubling columns={4}>
                 {
                     this.props.restaurants
                         .map((restaurant, index) => <RestaurantCard key={index} restaurant={restaurant} />)
                 }
-            </div>
+            </Grid>
         );
     }
 

@@ -53,13 +53,6 @@ body {
 
 /* ---------------------------------------------------NAVBAR---------------------------------------------------- */
 
-.restaurantContainer{
-  display: flex;
-  flex-direction: row; 
-  flex-wrap: wrap;
-  justify-content: space-around;
- 
-}
 
 .dealContainer{
   display: flex;
@@ -82,16 +75,56 @@ body {
 
 /* ---------------------------------------------------Containers---------------------------------------------------- */
 
-
 .mydealcard{
-  
   display: flex;
   flex-direction: row; 
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
-
-
 /* ---------------------------------------------------Cards---------------------------------------------------- */
+
+.divcolumn{
+ font-size: 20px;
+
+}
+
+.image-display img {
+  width: 260px;
+  height: 165px;
+}
+
+.deal-image img{
+  width: 390px;
+  height: 248px;
+}
+.ui.grid {
+  min-height: 300px;
+  max-height: 300px;
+}
+
+
+#searchBar {
+  height:250px;
+}
+
+div{
+  font-family: Monospace, Helvetica, sans-serif;
+  font-size: 15px;
+}
+
+.description {
+  font-family: Monospace, Helvetica, sans-serif
+}
+
+.hello {
+  font-family: Helvetica;
+  font-size: 20px;
+}
+
+.description{
+  font-size: 15px;
+  font-family:sCourier New
+}
+
 

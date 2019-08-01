@@ -29,7 +29,7 @@ const RestaurantSpecCard = (props) => {
                     </Card.Description><br />
                     <Card.Description>Review: {props.restaurant.review}</Card.Description><br />
                     <Card.Description>Cost Per Person: £{props.restaurant.average_cost_per_person}</Card.Description>
-                    <Button as='div' labelPosition='right'>
+                    {/* <Button as='div' labelPosition='right'>
                         <Button color='red'>
                             <Icon name='heart' />
                             Like
@@ -37,7 +37,7 @@ const RestaurantSpecCard = (props) => {
                         <Label as='a' basic color='blue' pointing='left'>
                             2,002
                         </Label>
-                    </Button>
+                    </Button> */}
 
                     <Map
                         className="map"

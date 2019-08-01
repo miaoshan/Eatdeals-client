@@ -20,20 +20,21 @@ const SearchBar = (props) => {
     return (
         <div>
             <Grid centered columns={2}>
-                <Grid.Column>
-                    <Header as="h2" textAlign="center"></Header>
-                    <Segment>
-                        <Form size="large">
-                            <Form.Input
-                                onSubmit={props.selectRestaurant} className="searchBar"
-                                className="searchBox"
-                                onChange={props.updateSearchTerm}
-                                type="text"
-                                placeholder="Search" />
-                        </Form>
-                    </Segment>
+                <Grid.Row>
+                    <Grid.Column>
+                        <Header as="h2" textAlign="center"></Header>
+                        <Segment>
+                            <Form size="large">
+                                <Form.Input
+                                    onSubmit={props.selectRestaurant} className="searchBar"
+                                    className="searchBox"
+                                    onChange={props.updateSearchTerm}
+                                    type="text"
+                                    placeholder="Search" />
+                            </Form>
+                        </Segment>
 
-                    {/* 
+                        {/* 
                     <div>
                         <p className="orangeFont">Sort By:</p>
                         <select onChange={props.setSortBy} className="searchButton">
@@ -43,17 +44,18 @@ const SearchBar = (props) => {
                         </select>
                     </div> */}
 
-                    <Dropdown
-                        placeholder='Sort By'
-                        fluid
+                        <Dropdown
+                            placeholder='Sort By'
+                            fluid
 
-                        selection onChange={props.setSortBy} className="searchButton"
-                        options={dropDownOptions}
+                            selection onChange={props.setSortBy} className="searchButton"
+                            options={dropDownOptions}
 
-                    />
+                        />
 
-                </Grid.Column >
-            </Grid >
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
 
         </div >
     )

@@ -4,6 +4,14 @@ import SearchBar from '../components/SearchBar';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 import DealForm from '../components/DealForm';
 import DealContainter from './DealContainer';
+import {
+    Button,
+    Form,
+    Grid,
+    Header,
+    Message,
+    Segment
+} from 'semantic-ui-react';
 
 const mapStyles = {
     width: '100%',
@@ -82,18 +90,23 @@ class MainContainer extends Component {
     render() {
 
         return (
-            <div className="searchAndFilter">
-                <SearchBar
-                    setFilter={this.setFilter} setSortBy={this.setSortBy}
-                    updateSearchTerm={this.updateSearchTerm}
-                    selectRestaurant={this.selectRestaurant}
-                ></SearchBar>
-                <RestaurantContainer restaurants={this.finalRestaurantsList()} searchTerm={this.state.searchTerm}
-                    deselectRestaurant={this.deselectRestaurant} selectRestaurant={this.selectRestaurant} />
-                {/* <DealContainter /> */}
-
-
-            </div >
+            <Grid>
+                <Grid.Row id="searchBar">
+                    <Grid.Column>
+                        <SearchBar
+                            setFilter={this.setFilter} setSortBy={this.setSortBy}
+                            updateSearchTerm={this.updateSearchTerm}
+                            selectRestaurant={this.selectRestaurant}
+                        ></SearchBar>
+                    </Grid.Column>
+                </Grid.Row>
+                <Grid.Row id="container">
+                    <Grid.Column>
+                        <RestaurantContainer restaurants={this.finalRestaurantsList()} searchTerm={this.state.searchTerm}
+                            deselectRestaurant={this.deselectRestaurant} selectRestaurant={this.selectRestaurant} />
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
         )
     }
 }

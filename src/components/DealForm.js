@@ -44,7 +44,7 @@ class DealForm extends React.Component {
             },
             body: JSON.stringify(deal)
         })
-        this.props.history.push("/mydeal")
+        this.props.history.push("/home")
         // submit post then redirect to "/home"
     }
 
@@ -62,16 +62,14 @@ class DealForm extends React.Component {
                         <Form size="large" className="dealform">
 
                             < form onSubmit={this.addDealToServer} className="searchBar" >
-
-
                                 {this.props.restaurant.name
                                 }
                                 <Form.Input
-                                    name="deal description"
+                                    name="description"
                                     className="inputBox"
                                     onChange={this.handleChange}
                                     type="text"
-                                    placeholder="deal description"
+                                    placeholder="description"
                                     label='description' />
 
                                 <Button color="gray" fluid size="large" className="submitButton" type="submit" >Submit</Button>

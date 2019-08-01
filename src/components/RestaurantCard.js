@@ -13,26 +13,22 @@ import {
 } from 'semantic-ui-react';
 
 const RestaurantCard = (props) => (
-    <Grid container columns={1} >
-
-        <Grid.Column>
+    <Grid.Column>
+        <div>
             <Link to={`/restaurants/${props.restaurant.id}`} >
                 <Image className="image-display" src={props.restaurant.image} wrapped ui={false} />
                 {props.restaurant.name}
+            </Link>
+        </div>
+        <div>
 
-            </Link><br />
-            Lastest Deal:
-                {
+            Lastest Deal: {
                 props.restaurant.deals.length > 0 ?
                     props.restaurant.deals[props.restaurant.deals.length - 1].description
                     : ""
             }
-        </Grid.Column>
-
-
-
-    </Grid>
-
+        </div>
+    </Grid.Column>
 )
 
 export default RestaurantCard

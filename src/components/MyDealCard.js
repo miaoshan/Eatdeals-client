@@ -30,21 +30,20 @@ class MyDealCard extends React.Component {
 
     render() {
         return (
-            <Grid centered columns={2}>
+            <Grid centered columns={3}>
                 <Grid.Row>
                     <Grid.Column>
                         <Link to={`/deals/${this.props.deal.id}`} ></Link>
-                        <Image src={this.props.restaurant.image} wrapped ui={false} />
+                        <Image className="deal-image" src={this.props.restaurant.image} wrapped ui={false} />
                     </Grid.Column>
                     <Grid.Column>
                         <Card.Header>
                             {console.log("?")}
-                            <Card.Description>{this.props.restaurant.name}</Card.Description><br />
+                            <Card.Description>{this.props.restaurant.name}</Card.Description>
                             <Card.Description>Location: {this.props.restaurant.location}</Card.Description><br />
                             <Card.Description>{this.props.restaurant.description}</Card.Description><br />
                             <Card.Description>Review: {this.props.restaurant.review}</Card.Description><br />
-                            <Card.Description>Cost Per Person: £{this.props.restaurant.average_cost_per_person}</Card.Description><br />
-
+                            {/* <Card.Description>Cost Per Person: £{this.props.restaurant.average_cost_per_person}</Card.Description> */}
                             <Card.Description>Deals:  {this.props.deal.description}</Card.Description><br />
                             <Link to={`/deals/${this.props.deal.id}/edit`} ><br />Edit</Link><br />
                             <button onClick={() => this.deleteMyDeal(this.props.deal.id)}>Delete</button>
@@ -54,20 +53,6 @@ class MyDealCard extends React.Component {
                     </Grid.Column>
                 </Grid.Row>
             </Grid >
-
-            /* < form onSubmit={this.addReviewToServer} className="searchBar" >review this deal:
-                <input
-                    name="description"
-                    className="inputBox"
-                    onChange={this.handleChange}
-                    type="text"
-                    placeholder="add review"
-                    label='description' />
-                <input className="submitButton" type="submit" /><br></br>
-
-            </form> */
-
-
 
         )
     }
