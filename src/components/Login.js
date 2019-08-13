@@ -21,7 +21,7 @@ class Login extends React.Component {
     }
 
     onLoginClicked = e => {
-        // debugger;
+
         e.preventDefault();
         api.login(this.state.username, this.state.password).then(data => {
             if (data.error) {
@@ -31,14 +31,13 @@ class Login extends React.Component {
                 localStorage.setItem("token", data.jwt);
                 this.setState({ logged_in: true }, () => this.props.saveUser(data));
 
-                // debugger
                 this.props.history.push('/home')
             }
         });
     };
 
     onSignupClicked = e => {
-        // debugger;
+
         e.preventDefault();
         api.signup(this.state.username, this.state.password).then(data => {
             if (data.error) {
@@ -67,7 +66,7 @@ class Login extends React.Component {
             <Grid centered columns={2}>
                 <Grid.Column>
                     <Header as="h2" textAlign="center">
-                        Please Signup or Login</Header>
+                        Welcome to Eatdeals! Please Signup or Login</Header>
                     <Segment>
                         <Form size="large">
                             <Form.Input

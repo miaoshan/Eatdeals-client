@@ -54,14 +54,12 @@ class MainContainer extends Component {
     setFilter = (e) => {
         this.setState({ filterType: e.target.value })
     }
-
     // sets the value of sort By in state 
 
     setSortBy = (event, props) => {
         this.setState({ sortBy: props.value })
     }
 
-    // 
     getFilteredRestaurants = (restaurants) => {
         return restaurants.filter(restaurant => restaurant.type === this.state.filterType || this.state.filterType === "All")
     }
@@ -76,7 +74,6 @@ class MainContainer extends Component {
         }
         return this.props.restaurants.sort(sortFunctions[this.state.sortBy])
     }
-
 
     finalRestaurantsList = () => {
         return this.filterBySearchTerm(this.getFilteredRestaurants(this.sortRestaurants()))

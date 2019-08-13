@@ -72,7 +72,6 @@ class DealForm extends React.Component {
                                     type="text"
                                     placeholder="description"
                                     label='description' />
-
                                 <Button color="gray" fluid size="large" className="submitButton" type="submit" >Submit</Button>
 
                             </form>
